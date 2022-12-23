@@ -1,6 +1,10 @@
 import { Routes, Route } from 'react-router';
 import LandingPage from './pages/landingPage';
 import HomePage from './pages/homePage';
+import ExplorePage from './pages/explorePage';
+import LoginPage from './pages/loginPage';
+import SignupPage from './pages/signupPage';
+import RecentlyPlayedPage from './pages/recentlyPlayedPage';
 
 function App() {
 
