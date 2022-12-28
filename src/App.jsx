@@ -5,6 +5,7 @@ import ExplorePage from './pages/ExplorePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import RecentlyPlayedPage from './pages/RecentlyPlayedPage';
+import './assets/css/generic.css'
 
 function App() {
 

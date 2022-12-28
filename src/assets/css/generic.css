@@ -1,0 +1,9 @@
+
+body, html {
+    font-family: 'Heebo', sans-serif;
+    background-color: rgba(35,35,35,255)
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: rgba(243,243,243,255)
+}
