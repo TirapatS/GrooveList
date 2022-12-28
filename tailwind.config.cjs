@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      body: ['Heebo']
+    },
     colors: {
       'GLblack': '#232323',
       'GLwhite': '#f9f9f9'
