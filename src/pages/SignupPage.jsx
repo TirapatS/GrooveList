@@ -10,6 +10,9 @@ const SignupForm = () => {
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
 
+    // TODO with animations
+    /* const [loading, setLoading] = useState(null) */
+
     const navigate = useNavigate()
     const { signup } = useAuthContext()
 
@@ -22,14 +25,16 @@ const SignupForm = () => {
             return 
 		}
 
-		// try to sign up the user with the specified credentials
-		/* try {
-            await signup(usernameRef.current.value ,emailRef.current.value, passwordRef.current.value)
-			navigate('/')
+		try {
+            /* setLoading(true) */
+            await signup(usernameRef.current.value, emailRef.current.value, passwordRef.current.value)
+            console.log('created')
+			navigate('/home')
 
 		} catch (err) {
-			toast.error('Could not create account')
-		} */
+            console.log(err)
+            toast.error(err.message)
+		}
 
     }
 
@@ -54,19 +59,20 @@ const SignupForm = () => {
 
                                 <div>
                                     <label className="block mb-2 text-sm font-body text-GLwhite">Your email</label>
-                                    <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com" required ref={emailRef} />
+                                    <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="...@email.com" required ref={emailRef} />
                                 </div>
                                 <div>
                                     <label className="block mb-2 text-sm font-body text-GLwhite">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ref={passwordRef} />
+                                    <input type="password" name="password" id="password" placeholder="" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ref={passwordRef} />
                                 </div>
 
                                 <div>
                                     <label className="block mb-2 text-sm font-body text-GLwhite">Confirm Password</label>
-                                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ref={confirmPasswordRef} />
+                                    <input type="password" name="confirmPassword" id="confirmPassword" placeholder="" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required ref={confirmPasswordRef} />
                                 </div>
                                
                                 <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-body rounded-lg text-sm px-5 py-2.5 text-center dark:hover:bg-primary-700 dark:focus:ring-primary-800">Submit</button>
+                                
                                 <p className="text-sm text-GLwhite">
                                     Already have an account? <Link className="font-body text-primary-600 hover:underline" to="/login">Log In</Link>
                                 </p>
