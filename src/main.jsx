@@ -5,12 +5,15 @@ import './index.css'
 import 'flowbite';
 import { BrowserRouter } from 'react-router-dom';
 import AuthContextProvider from './contexts/AuthContext'
+import { RecoilRoot } from 'recoil';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthContextProvider>
-        <App/>
+        <RecoilRoot>
+          <App/>
+        </RecoilRoot>
       </AuthContextProvider>
 		</BrowserRouter>
   </React.StrictMode>,
