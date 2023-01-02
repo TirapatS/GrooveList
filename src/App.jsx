@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import RecentlyPlayedPage from './pages/RecentlyPlayedPage';
 import CommunityPage from './pages/CommunityPage';
+import AccountPage from './pages/AccountPage';
 import './assets/css/generic.css'
 
 import { ToastContainer } from 'react-toastify';
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="signup" element={<SignupPage/>}/>
         <Route path="recently-played" element={<RecentlyPlayedPage/>}/>
+        <Route path="account" element={<AccountPage/>}/>
 
         {/*TODO Favourites and Create Album page is only available for logged in users */}
       </Routes>
