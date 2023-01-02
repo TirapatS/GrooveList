@@ -5,10 +5,12 @@ import ExplorePage from './pages/ExplorePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import RecentlyPlayedPage from './pages/RecentlyPlayedPage';
+import CommunityPage from './pages/CommunityPage';
 import './assets/css/generic.css'
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/explore" element={<ExplorePage/>}/>
+        <Route path="/community" element={<CommunityPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="signup" element={<SignupPage/>}/>
         <Route path="recently-played" element={<RecentlyPlayedPage/>}/>
