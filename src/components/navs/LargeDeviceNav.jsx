@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import Logo from '../../static/favicon.png'
+import Logo from '../../../static/favicon.png'
 
 const LargeDeviceNav = () => {
     return (
