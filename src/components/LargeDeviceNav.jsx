@@ -4,8 +4,8 @@ import Logo from '../../static/favicon.png'
 const LargeDeviceNav = () => {
     return (
         <>  
-            <aside className="w-20 h-screen border-r-2" aria-label="Sidebar">
-                <div className="overflow-y-auto py-4 px-3 bg-GLblack rounded">
+            <aside className="w-20 h-screen border-r-2 flex" aria-label="Sidebar">
+                <div className="py-4 px-3 bg-GLblack rounded">
                     <ul className="space-y-2">
                         <li>
                             <div className="text-GLwhite font-body text-2xl flex items-center justify-around"><img src={Logo} className="bg-white p-1 rounded" /></div>
