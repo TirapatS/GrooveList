@@ -7,8 +7,7 @@ const CardList = ({data}) => {
                 <div id="slider" className="max-h-[120px] overflow-y-auto scroll whitespace-nowrap scroll-smooth">  
                     {data.map((item) => {
                        return (
-                        <>
-                           <div className="my-3">
+                            <div className="my-3" key={item.id}>
                                 <img
                                 className="w-[69px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl"
                                 src={item.images[0].url}
@@ -18,7 +17,6 @@ const CardList = ({data}) => {
                                 <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
                                 <p className="text-GLwhite text-m ml-2 truncate">{item.artists[0].name}</p>
                            </div>
-                        </>
                        )
                     })}
                 </div>
