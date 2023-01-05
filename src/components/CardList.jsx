@@ -1,5 +1,12 @@
+import { useSetRecoilState } from "recoil"
+import { selectedTrackState } from "../atoms/global"
 
 const CardList = ({data}) => {
+    const setSelectedTrack = useSetRecoilState(selectedTrackState)
+
+    const handleClickedTrack = (item) => {
+        setSelectedTrack(item)
+    }
 
     return (
         <>
@@ -7,7 +14,7 @@ const CardList = ({data}) => {
                 <div id="slider" className="max-h-[120px] overflow-y-auto scroll whitespace-nowrap scroll-smooth">  
                     {data.map((item) => {
                        return (
-                            <div className="my-3" key={item.id}>
+                            <div className="my-3" key={item.id} onClick={() => handleClickedTrack(item)} >
                                 <img
                                 className="w-[69px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl"
                                 src={item.images[0].url}
