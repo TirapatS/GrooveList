@@ -20,15 +20,32 @@ const getAuth = async () => {
               'Content-Type': 'application/x-www-form-urlencoded' 
             }
         })
-        
-        return response.data.access_token
+        localStorage.setItem('authAccess', response.data.access_token)
+        localStorage.setItem('authTimer', new Date().getTime())
     }catch(error){
         console.log(error)
     }
 }
 
+const checkAccessToken = async () => {
+    const token = localStorage.getItem('authAccess');
+    if (!token) {
+      getAuth()
+    }
+    try {
+        let hour = 60 * 60 * 1000;
+        const anHourAgo = Date.now() - hour;
+        if(localStorage.getItem('authTimer') > anHourAgo) {
+           getAuth()
+        }
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 const getNewRelease = async () => {
-    const accessToken = await getAuth()
+    checkAccessToken()
+    const accessToken = localStorage.getItem('authAccess')
 
     try {
         const response = await axios.get(baseUrl + 'browse/new-releases', {
