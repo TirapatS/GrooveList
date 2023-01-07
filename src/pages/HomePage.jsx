@@ -12,10 +12,11 @@ const HomePage = () => {
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
   const [newReleases, setNewReleases] = useState(null)
+  // Fetch data from backend
+  const community = false;
   
   const fetchAllData = async () => {
     const getNewReleases = await SpotifyApi.getNewRelease()
-    console.log(getNewReleases)
     setNewReleases(getNewReleases.albums.items)
   }
   
@@ -50,6 +51,17 @@ const HomePage = () => {
               }
               
             </div>
+            <div className="my-5 mx-2">
+              <h1 className="font-extrabold text-xl">Community Albums</h1>
+              {
+                (community) ? <CardList data={community}/> 
+                : <div className="text-center">
+                    <h3>There was a problem fetching data 😢</h3>
+                    {/* Visa loading spinner istället */}
+                  </div>
+              }
+              
+            </div>
           </div>
         </>
 
@@ -59,8 +71,29 @@ const HomePage = () => {
         <>
           <div className="flex">
             <LargeDeviceNav/>
-            <div className="ml-10">
+            <div className="ml-10 mt-4">
               <SearchBar/>
+              <div className="my-5 mx-2 laptop:w-[500px]">
+                <h1 className="font-extrabold text-xl">New releases</h1>
+                {
+                  (newReleases) ? <CardList data={newReleases}/> 
+                  : <div className="text-center">
+                      <h3>There was a problem fetching data 😢</h3>
+                      {/* Visa loading spinner istället */}
+                    </div>
+                }
+                
+              </div>
+              <div className="my-5 mx-2 w-[500px]">
+                <h1 className="font-extrabold text-xl">Community Albums</h1>
+                {
+                  (community) ? <CardList data={community}/> 
+                  : <div className="text-center mt-4">
+                      <h3>There is no data 😢</h3>
+                      {/* Visa loading spinner istället */}
+                    </div>
+                }
+              </div>
             </div>
           </div>
         </>
