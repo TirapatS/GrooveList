@@ -10,13 +10,13 @@ const CardList = ({data}) => {
 
     return (
         <>
-            <div className="relative flex items-center my-5 bg-gray-600 rounded-xl">
-                <div id="slider" className="max-h-[120px] overflow-y-auto scroll whitespace-nowrap scroll-smooth">  
+            <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
+                <div id="slider" className="max-h-[120px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                     {data.map((item) => {
                        return (
                             <div className="my-3" key={item.id} onClick={() => handleClickedTrack(item)} >
                                 <img
-                                className="w-[69px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl"
+                                className="w-[69px] laptop:w-[120px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
                                 src={item.images[0].url}
                                 alt={item.name + 'thumbnail'}
                                 />
