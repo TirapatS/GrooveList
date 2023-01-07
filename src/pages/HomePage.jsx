@@ -4,7 +4,7 @@ import { deviceWidthState } from '../atoms/global.js'
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SearchBar from "../components/SearchBar.jsx";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
-import CardList from "../components/CardList.jsx";
+import CardList from "../components/ScrollList.jsx";
 import SpotifyApi from '../services/spotifyApi'
 
 const HomePage = () => {
