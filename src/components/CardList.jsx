@@ -1,9 +1,8 @@
 
 const CardList = ({ data }) => {
-    console.log(data)
     return (
         <>
-            <div className="bg-GLblack rounded-lg shadow-md mb-[200px]">
+            <div className="bg-GLblack rounded-lg shadow-md">
                 <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-5 grid-flow-col p-2 laptop:p-0">
                     {data.categories.items.map((item) => {
                         return (
