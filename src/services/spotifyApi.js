@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Buffer } from 'buffer'
 import qs from 'qs'
-import { toast } from 'react-toastify'
+
 
 const clientId = import.meta.env.VITE_SPOTIFY_PUBLIC_CLIENT_ID
 const clientSecret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET
@@ -20,32 +20,15 @@ const getAuth = async () => {
               'Content-Type': 'application/x-www-form-urlencoded' 
             }
         })
-        localStorage.setItem('authAccess', response.data.access_token)
-        localStorage.setItem('authTimer', new Date().getTime())
+        return response.data.access_token
     }catch(error){
         console.log(error)
     }
 }
 
-const checkAccessToken = async () => {
-    const token = localStorage.getItem('authAccess');
-    if (!token) {
-      getAuth()
-    }
-    try {
-        let hour = 60 * 60 * 1000;
-        const anHourAgo = Date.now() - hour;
-        if(localStorage.getItem('authTimer') > anHourAgo) {
-           getAuth()
-        }
-    } catch (e) {
-        console.log(e)
-    }
-}
 
 const getNewRelease = async () => {
-    checkAccessToken()
-    const accessToken = localStorage.getItem('authAccess')
+    const accessToken = await getAuth()
 
     try {
         const response = await axios.get(baseUrl + 'browse/new-releases', {
@@ -60,8 +43,26 @@ const getNewRelease = async () => {
     }
 }
 
+const getCategories = async (page) => {
+    const accessToken = await getAuth()
+
+    try {
+        const response = await axios.get(baseUrl + `browse/categories?country=SE&offset=${page}&limit=20`, {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 const exports = {
-    getNewRelease
+    getNewRelease,
+    getCategories,
 }
 
 export default exports
