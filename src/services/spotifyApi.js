@@ -74,11 +74,58 @@ const getCategory = async (id, page) => {
     }
 }
 
+const getCategoryInfo = async (id) => {
+    const accessToken = await getAuth()
+
+    try {
+        const response = await axios.get(baseUrl + `browse/categories/${id}`, {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getPlaylist = async (id, page) => {
+    const accessToken = await getAuth()
+    try {
+        const response = await axios.get(baseUrl + `playlists/${id}/tracks?fields=items(added_by.id%2Ctrack(name%2Chref%2Calbum%2Cimage(name%2Chref)))&limit=20&offset=${page}`, {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getPlaylistInfo = async (id) => {
+    const accessToken = await getAuth()
+
+    try {
+        const response = await axios.get(baseUrl + `playlists/${id}`, {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 const exports = {
     getNewRelease,
     getCategories,
-    getCategory
+    getCategory,
+    getCategoryInfo,
+    getPlaylist,
+    getPlaylistInfo
 }
 
 export default exports
