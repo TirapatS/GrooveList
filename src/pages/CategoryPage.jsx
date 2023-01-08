@@ -1,5 +1,5 @@
-import { useRecoilValue } from "recoil"
-import { deviceWidthState, selectedCategoryState } from "../atoms/global"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { deviceWidthState, selectedCategoryState, selectedPlaylistState } from "../atoms/global"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import SpotifyApi from '../services/spotifyApi'
@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 import CardList from "../components/CardList"
 import { useNavigate } from "react-router-dom"
 
-const AlbumPage = () => {
+const CategoryPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
     const [largeDevice, setLargeDevice] = useState(null)
     const width = useRecoilValue(deviceWidthState)
@@ -19,22 +19,21 @@ const AlbumPage = () => {
     
 
     const selectedCategory = useRecoilValue(selectedCategoryState)
+    const setPlaylist = useSetRecoilState(selectedPlaylistState)
 
     const fetchAllData = async (selectedCategory, page) => {
         if(!selectedCategory) {
             navigate('/explore')
+            return
         }
-        const getCategory = await SpotifyApi.getCategory(selectedCategory, page)
-        setCategory(getCategory.data.playlists)
-        console.log("data",getCategory.data.playlists)
 
         if(!page) {
-            const getCategories = await SpotifyApi.getCategories(0)
+            const getCategory = await SpotifyApi.getCategory(selectedCategory, 0)
             setCategory(getCategory.data.playlists)
             setNext(getCategory?.data.next)
             setPrev(getCategory?.data.previous)
         } else {
-            const getCategories = await SpotifyApi.getCategories(page)
+            const getCategory = await SpotifyApi.getCategory(selectedCategory, page)
             setCategory(getCategory.data.playlists)
             setNext(getCategory?.data.next)
             setPrev(getCategory?.data.previous)
@@ -42,6 +41,7 @@ const AlbumPage = () => {
     }
 
     const handleClick = (playlist) => {
+        setPlaylist(playlist)
         navigate(`/playlist/${playlist}`)
     }
       
@@ -157,4 +157,4 @@ const AlbumPage = () => {
     )
 }
 
-export default AlbumPage
+export default CategoryPage
