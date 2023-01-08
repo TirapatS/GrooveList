@@ -15,17 +15,22 @@ const CategoryPage = () => {
     const [page, setPage] = useState(0)
     const [next, setNext] = useState(null)
     const [prev, setPrev] = useState(null)
+    const [title, setTitle] = useState('')
     const navigate = useNavigate()
     
 
     const selectedCategory = useRecoilValue(selectedCategoryState)
     const setPlaylist = useSetRecoilState(selectedPlaylistState)
+    
 
     const fetchAllData = async (selectedCategory, page) => {
         if(!selectedCategory) {
             navigate('/explore')
             return
         }
+
+        const getTitle = await SpotifyApi.getCategoryTitle(selectedCategory)
+        setTitle(getTitle.data.name)
 
         if(!page) {
             const getCategory = await SpotifyApi.getCategory(selectedCategory, 0)
@@ -67,7 +72,7 @@ const CategoryPage = () => {
                         <SmallDeviceNav/>
 
                         <div className="my-5 mx-2">
-                            <h1 className="font-extrabold text-xl">Explore Category's Playlists</h1>
+                            <h1 className="font-extrabold text-xl">Explore {title}</h1>
                             {
                                 (category) ? 
                                 <div>
@@ -112,7 +117,7 @@ const CategoryPage = () => {
                         <LargeDeviceNav/>
                         <div className="ml-10 mt-4">
                             <div className="my-5 mx-2 laptop:w-[500px]">
-                                <h1 className="font-extrabold text-xl">Explore Category's Playlists</h1>
+                                <h1 className="font-extrabold text-xl">Explore {title}</h1>
                                 {
                                 (category) ? 
                                 <>
