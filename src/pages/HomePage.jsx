@@ -4,7 +4,7 @@ import { deviceWidthState } from '../atoms/global.js'
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SearchBar from "../components/SearchBar.jsx";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
-import CardList from "../components/ScrollList.jsx";
+import ScrollList from "../components/ScrollList.jsx";
 import SpotifyApi from '../services/spotifyApi'
 
 const HomePage = () => {
@@ -43,7 +43,7 @@ const HomePage = () => {
             <div className="my-5 mx-2">
               <h1 className="font-extrabold text-xl">New releases</h1>
               {
-                (newReleases) ? <CardList data={newReleases}/> 
+                (newReleases) ? <ScrollList data={newReleases}/> 
                 : <div className="text-center">
                     <h3>There was a problem fetching data 😢</h3>
                     {/* Visa loading spinner istället */}
@@ -54,7 +54,7 @@ const HomePage = () => {
             <div className="my-5 mx-2">
               <h1 className="font-extrabold text-xl">Community Albums</h1>
               {
-                (community) ? <CardList data={community}/> 
+                (community) ? <ScrollList data={community}/> 
                 : <div className="text-center">
                     <h3>There was a problem fetching data 😢</h3>
                     {/* Visa loading spinner istället */}
@@ -76,7 +76,7 @@ const HomePage = () => {
               <div className="my-5 mx-2 laptop:w-[500px]">
                 <h1 className="font-extrabold text-xl">New releases</h1>
                 {
-                  (newReleases) ? <CardList data={newReleases}/> 
+                  (newReleases) ? <ScrollList data={newReleases}/> 
                   : <div className="text-center">
                       <h3>There was a problem fetching data 😢</h3>
                       {/* Visa loading spinner istället */}
@@ -87,7 +87,7 @@ const HomePage = () => {
               <div className="my-5 mx-2 w-[500px]">
                 <h1 className="font-extrabold text-xl">Community Albums</h1>
                 {
-                  (community) ? <CardList data={community}/> 
+                  (community) ? <ScrollList data={community}/> 
                   : <div className="text-center mt-4">
                       <h3>There is no data 😢</h3>
                       {/* Visa loading spinner istället */}
