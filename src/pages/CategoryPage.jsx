@@ -29,7 +29,7 @@ const CategoryPage = () => {
             return
         }
 
-        const getTitle = await SpotifyApi.getCategoryTitle(selectedCategory)
+        const getTitle = await SpotifyApi.getCategoryInfo(selectedCategory)
         setTitle(getTitle.data.name)
 
         if(!page) {
