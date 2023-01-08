@@ -18,7 +18,11 @@ const CardList = ({ data }) => {
                     {data.items.map((item) => {
                         return (
                             <div onClick={() => handleClick(item.id)} className="my-3 laptop:w-[120px] w-[69px]" key={item.id}>
-                                <img className="rounded-lg hover:p-1" src={item.icons?.[0].url} title={item.name}/>
+                                {
+                                    (item.icons?.[0].url) ? <img className="rounded-lg hover:p-1" src={item.icons?.[0].url} title={item.name}/> 
+                                    :
+                                    <img className="rounded-lg hover:p-1" src={item.images?.[0].url} title={item.name}/>
+                                }
                             </div>
                         )
                     })}
