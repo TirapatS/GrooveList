@@ -21,7 +21,7 @@ const ExplorePage = () => {
     const fetchData = async (page) => {
         if(!page) {
             const getCategories = await SpotifyApi.getCategories(0)
-            setCategories(getCategories)
+            setCategories(getCategories.categories)
             setNext(getCategories?.categories.next)
             setPrev(getCategories?.categories.previous)
         } else {
