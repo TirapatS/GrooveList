@@ -11,7 +11,7 @@ import './assets/css/generic.css'
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AlbumPage from './pages/AlbumPage';
+import CategoryPage from './pages/CategoryPage';
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<LandingPage/>}/>
         <Route path="/home" element={<HomePage/>}/>
         <Route path="/explore" element={<ExplorePage/>}/>
-        <Route path="/album/:id" element={<AlbumPage/>}/>
+        <Route path="/category/:id" element={<CategoryPage/>}/>
         <Route path="/community" element={<CommunityPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="signup" element={<SignupPage/>}/>
