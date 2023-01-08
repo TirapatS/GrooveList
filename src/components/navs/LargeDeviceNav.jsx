@@ -4,7 +4,7 @@ import Logo from '../../../static/favicon.png'
 const LargeDeviceNav = () => {
     return (
         <>  
-            <aside className="w-20 h-full-screen border-r-2 flex" aria-label="Sidebar">
+            <aside className="w-20 h-screen border-r-2 flex" aria-label="Sidebar">
                 <div className="py-4 px-3 bg-GLblack rounded">
                     <ul className="space-y-2">
                         <li>
