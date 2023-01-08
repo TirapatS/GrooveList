@@ -59,10 +59,26 @@ const getCategories = async (page) => {
     }
 }
 
+const getCategory = async (id, page) => {
+    const accessToken = await getAuth()
+
+    try {
+        const response = await axios.get(baseUrl + `browse/categories/${id}/playlists?offset=${page}&limit=20`, {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 const exports = {
     getNewRelease,
     getCategories,
+    getCategory
 }
 
 export default exports
