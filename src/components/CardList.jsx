@@ -1,16 +1,6 @@
-import { useNavigate } from "react-router-dom"
-import { useSetRecoilState } from "recoil"
-import { selectedCategoryState } from "../atoms/global"
 
-const CardList = ({ data }) => {
-    const navigate = useNavigate()
-    const selectedCategory = useSetRecoilState(selectedCategoryState)
+const CardList = ({ data, handleClick }) => {    
     
-    const handleClick = (category) => {
-        selectedCategory(category)
-        navigate(`/category/${category}`)
-    }
-
     return (
         <>
             <div className="bg-GLblack rounded-lg">

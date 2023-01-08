@@ -6,7 +6,6 @@ import SpotifyApi from '../services/spotifyApi'
 import { useEffect, useState } from "react"
 import CardList from "../components/CardList"
 import { useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
 
 const AlbumPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -17,6 +16,7 @@ const AlbumPage = () => {
     const [next, setNext] = useState(null)
     const [prev, setPrev] = useState(null)
     const navigate = useNavigate()
+    
 
     const selectedCategory = useRecoilValue(selectedCategoryState)
 
@@ -39,6 +39,10 @@ const AlbumPage = () => {
             setNext(getCategory?.data.next)
             setPrev(getCategory?.data.previous)
         }
+    }
+
+    const handleClick = (playlist) => {
+        navigate(`/playlist/${playlist}`)
     }
       
     useEffect(()=> {
@@ -67,7 +71,7 @@ const AlbumPage = () => {
                             {
                                 (category) ? 
                                 <div>
-                                    <CardList data={category}/> 
+                                    <CardList data={category} handleClick={handleClick}/> 
                                     <div className="mb-20">   
                                         <div className="flex flex-col ">
                                             <div className="inline-flex mt-2 xs:mt-0">
@@ -112,7 +116,7 @@ const AlbumPage = () => {
                                 {
                                 (category) ? 
                                 <>
-                                    <CardList data={category}/> 
+                                    <CardList data={category} handleClick={handleClick}/> 
                                     <div className="mb-20">   
                                         <div className="flex flex-col items-center w-[669px]">
 

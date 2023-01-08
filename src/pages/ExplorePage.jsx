@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { useRecoilValue } from "recoil"
-import { deviceWidthState } from "../atoms/global"
+import { useNavigate } from "react-router-dom"
+import { useRecoilValue, useSetRecoilState } from "recoil"
+import { deviceWidthState, selectedCategoryState } from "../atoms/global"
 import CardList from "../components/CardList"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
@@ -16,6 +17,8 @@ const ExplorePage = () => {
     const [page, setPage] = useState(0)
     const [next, setNext] = useState(null)
     const [prev, setPrev] = useState(null)
+    const navigate = useNavigate()
+    const setCategoryState = useSetRecoilState(selectedCategoryState)
     
       
     const fetchData = async (page) => {
@@ -30,6 +33,11 @@ const ExplorePage = () => {
             setNext(getCategories?.categories.next)
             setPrev(getCategories?.categories.previous)
         }
+    }
+
+    const handleClick = (category) => {
+        setCategoryState(category)
+        navigate(`/category/${category}`)
     }
       
     useEffect(()=> {
@@ -59,7 +67,7 @@ const ExplorePage = () => {
                             {
                                 (categories) ? 
                                 <div>
-                                    <CardList data={categories}/> 
+                                    <CardList data={categories} handleClick={handleClick}/> 
                                     <div className="mb-20">   
                                         <div className="flex flex-col ">
                                             <div className="inline-flex mt-2 xs:mt-0">
@@ -104,7 +112,7 @@ const ExplorePage = () => {
                                 {
                                 (categories) ? 
                                 <>
-                                    <CardList data={categories}/> 
+                                    <CardList data={categories} handleClick={handleClick}/> 
                                     <div className="mb-20">   
                                         <div className="flex flex-col items-center w-[669px]">
 
