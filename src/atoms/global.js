@@ -8,11 +8,16 @@ export const deviceWidthState = atom({
 });
 
 export const selectedTrackState = atom({
-    key: 'selectedTrack',
+    key: 'SelectedTrack',
     default: []
 })
 
 export const selectedCategoryState = atom({
-    key: 'selectedCategory',
+    key: 'SelectedCategory',
+    default: ''
+})
+
+export const selectedPlaylistState = atom({
+    key: 'SelectedPlaylist',
     default: ''
 })
