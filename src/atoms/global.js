@@ -11,3 +11,8 @@ export const selectedTrackState = atom({
     key: 'selectedTrack',
     default: []
 })
+
+export const selectedCategoryState = atom({
+    key: 'selectedCategory',
+    default: ''
+})
