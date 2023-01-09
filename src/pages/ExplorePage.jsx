@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { useRecoilValue, useSetRecoilState } from "recoil"
-import { deviceWidthState, selectedCategoryState } from "../atoms/global"
+import { useRecoilValue } from "recoil"
+import { deviceWidthState } from "../atoms/global"
 import CardList from "../components/CardList"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
@@ -18,7 +18,6 @@ const ExplorePage = () => {
     const [next, setNext] = useState(null)
     const [prev, setPrev] = useState(null)
     const navigate = useNavigate()
-    const setCategoryState = useSetRecoilState(selectedCategoryState)
       
     const fetchData = async (page) => {
         if(!page) {
@@ -37,7 +36,6 @@ const ExplorePage = () => {
     }
 
     const handleClick = (category) => {
-        setCategoryState(category)
         navigate(`/category/${category}`)
     }
 

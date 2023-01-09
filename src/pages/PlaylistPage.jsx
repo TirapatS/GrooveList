@@ -1,27 +1,24 @@
 import { useRecoilValue } from "recoil"
-import { deviceWidthState, selectedCategoryState, selectedPlaylistState } from "../atoms/global"
+import { deviceWidthState } from "../atoms/global"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import SpotifyApi from '../services/spotifyApi'
 import { useEffect, useState } from "react"
 import ShowcasePlaylist from "../components/ShowcasePlaylist"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 const PlaylistPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
     const [largeDevice, setLargeDevice] = useState(null)
     const width = useRecoilValue(deviceWidthState)
     const [playlist, setPlaylist] = useState(null)
-    const [page, setPage] = useState(0)
     const [title, setTitle] = useState('')
     const navigate = useNavigate()
+    const { id } = useParams()
     
-    const selectedPlaylist = useRecoilValue(selectedPlaylistState)
-    const selectedCategory = useRecoilValue(selectedCategoryState)
-
     const fetchAllData = async (selectedPlaylist, page) => {
-        if(!selectedPlaylist) {
-            navigate(`/explore${selectedCategory}`)
+        if(!id) {
+            navigate(`/explore${id}}`)
             return
         }
 
@@ -48,12 +45,8 @@ const PlaylistPage = () => {
           setLargeDevice(width)
         }
     
+        fetchAllData(id)
     }, [])
-
-    useEffect(() => {
-        fetchAllData(selectedPlaylist, page)
-    }, [page])
-    
 
     
     return (
