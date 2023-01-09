@@ -69,7 +69,7 @@ const ExplorePage = () => {
                                 <div>
                                     <CardList data={categories} handleClick={handleClick}/> 
                                     <div className="mb-20">   
-                                        <div className="flex flex-col ">
+                                        <div className="flex flex-col items-center">
                                             <div className="inline-flex mt-2 xs:mt-0">
                                                 {
                                                     (prev) ? 
