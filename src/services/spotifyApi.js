@@ -59,11 +59,11 @@ const getCategories = async (page) => {
     }
 }
 
-const getCategory = async (id, page) => {
+const getCategory = async (id) => {
     const accessToken = await getAuth()
 
     try {
-        const response = await axios.get(baseUrl + `browse/categories/${id}/playlists?offset=${page}&limit=20`, {
+        const response = await axios.get(baseUrl + `browse/categories/${id}/playlists?&limit=20`, {
             headers: {
               'Authorization': `Bearer ${accessToken}`
             }
