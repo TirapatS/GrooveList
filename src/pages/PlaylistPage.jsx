@@ -26,7 +26,6 @@ const PlaylistPage = () => {
         }
 
         const getTitle = await SpotifyApi.getPlaylistInfo(selectedPlaylist)
-        console.log(getTitle)
         setTitle(getTitle.data.name)
 
         if(!page) {
