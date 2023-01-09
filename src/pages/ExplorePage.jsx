@@ -15,7 +15,6 @@ const ExplorePage = () => {
     const width = useRecoilValue(deviceWidthState)
     const [categories, setCategories] = useState(null)
     const [page, setPage] = useState(0)
-    const [clicks, setClicks] = useState(1)
     const [next, setNext] = useState(null)
     const [prev, setPrev] = useState(null)
     const navigate = useNavigate()
