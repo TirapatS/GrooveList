@@ -1,6 +1,5 @@
 
 const ShowcasePlaylist = ({ data, handleClick }) => {    
-    console.log(data)
     return (
         <>
             <div className="bg-GLblack rounded-lg mb-[100px]">
