@@ -1,9 +1,9 @@
 
 const CardList = ({ data, handleClick }) => {    
-    console.log(data)
+
     return (
         <>
-            <div className="bg-GLblack rounded-lg mb-[100px]">
+            <div className="bg-GLblack rounded-lg mb-[100px] laptop:mb-[0px]">
                 <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-6 grid-flow-col p-2 laptop:p-0">
                     {data.items.map((item, idx) => {
                         return (
