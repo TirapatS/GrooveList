@@ -27,11 +27,10 @@ function App() {
         <Route path="/playlist/:id" element={<PlaylistPage/>}/>
         <Route path="/community" element={<CommunityPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
-        <Route path="signup" element={<SignupPage/>}/>
-        <Route path="recently-played" element={<RecentlyPlayedPage/>}/>
-        <Route path="account" element={<AccountPage/>}/>
+        <Route path="/signup" element={<SignupPage/>}/>
+        <Route path="/favourites" element={<RecentlyPlayedPage/>}/>
+        <Route path="/account" element={<AccountPage/>}/>
 
-        {/*TODO Favourites and Create Album page is only available for logged in users */}
       </Routes>
 
       <ToastContainer
