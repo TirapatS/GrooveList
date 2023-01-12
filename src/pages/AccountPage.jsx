@@ -10,7 +10,6 @@ import useUsers from '../hooks/useUsers'
 const AccountPage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
   const [largeDevice, setLargeDevice] = useState(null)
-  const [showName, setShowName] = useState('')
   const width = useRecoilValue(deviceWidthState)
   const navigate = useNavigate()
   const { currentUser, userEmail, displayName, logout} = useAuthContext()
