@@ -5,7 +5,7 @@ import { useAuthContext } from '../contexts/AuthContext'
 
 const SignupForm = () => {
 
-    const usernameRef = useRef()
+    const displayNameRef = useRef()
     const emailRef = useRef()
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
@@ -27,8 +27,7 @@ const SignupForm = () => {
 
 		try {
             /* setLoading(true) */
-            await signup(usernameRef.current.value, emailRef.current.value, passwordRef.current.value)
-            console.log('created')
+            await signup(displayNameRef.current.value, emailRef.current.value, passwordRef.current.value)
 			navigate('/home')
 
 		} catch (err) {
@@ -54,7 +53,7 @@ const SignupForm = () => {
 
                                 <div>
                                     <label className="block mb-2 text-sm font-body text-GLwhite">Your username</label>
-                                    <input type="username" name="username" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Groover" required ref={usernameRef} />
+                                    <input type="username" name="username" id="username" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Groover" required ref={displayNameRef} />
                                 </div>
 
                                 <div>

@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from '../firebase'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 
 const AuthContext = createContext()
@@ -12,21 +12,24 @@ const useAuthContext = () => {
 const AuthContextProvider = ({ children }) => {
 
     const [currentUser, setCurrentUser] = useState(null)
-    const [userName, setUserName] = useState(null)
+    const [displayName, setDisplayName] = useState(null)
     const [userEmail, setUserEmail] = useState(null)
 
-    const signup = async (username, email, password) => {
-        
+    const signup = async (name, email, password) => {
+
         await createUserWithEmailAndPassword(auth, email, password)
        
         const docRef = doc(db, 'users', auth.currentUser.email) 
+
+        await handleDisplayName(name)
+
+		await reloadUser()
       
         await setDoc(docRef, {
-            username,
+            name,
             email,
-            favourites: [],
-            albums: [],
-            uid: auth.currentUser.uid
+            uid: auth.currentUser.uid,
+            GLmember: true
         })
        
     }
@@ -40,12 +43,25 @@ const AuthContextProvider = ({ children }) => {
         return signOut(auth)
     }
 
-    // auth-state observer 
-	useEffect(() => {
+    const handleDisplayName = async (displayName) => {
+        return updateProfile(auth.currentUser, {
+            displayName
+        })
+    }
+
+    const reloadUser = async () => {
+		await auth.currentUser.reload()
+		setCurrentUser(auth.currentUser)
+		setDisplayName(auth.currentUser.displayName)
+		setUserEmail(auth.currentUser.email)
+		return true
+	}
+
+    useEffect(() => {
 		// listen for auth-state changes
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
 			setCurrentUser(user)
-			setUserName(user?.username)
+			setDisplayName(user?.displayName)
 			setUserEmail(user?.email)
 		})
 
@@ -58,10 +74,9 @@ const AuthContextProvider = ({ children }) => {
 		signup,
         login,
         logout,
-		userName,
+		displayName,
 		userEmail,
     }
-
     return ( 
         <AuthContext.Provider value={values}>
             {children}
