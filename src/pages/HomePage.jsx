@@ -6,14 +6,15 @@ import SearchBar from "../components/SearchBar.jsx";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import ScrollList from "../components/ScrollList.jsx";
 import SpotifyApi from '../services/spotifyApi'
+import useCommunity from "../hooks/useCommunity.js";
 
 const HomePage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
   const [newReleases, setNewReleases] = useState(null)
-  // Fetch data from backend TODO
-  const community = false;
+  const [community, setCommunity] = useState(null)
+  const { data } = useCommunity('community-albums')
   
   const fetchAllData = async () => {
     const getNewReleases = await SpotifyApi.getNewRelease()
@@ -26,11 +27,14 @@ const HomePage = () => {
     }else {
       setLargeDevice(width)
     }
+    
+    if(data.length > 1) {
+      setCommunity(data)
+    }
 
     fetchAllData()
   }, [])
 
-  
   
   return (
     <>
@@ -46,7 +50,7 @@ const HomePage = () => {
                 (newReleases) ? <ScrollList data={newReleases}/> 
                 : <div className="text-center">
                     <h3>There was a problem fetching data 😢</h3>
-                    {/* Visa loading spinner istället */}
+                    Visa loading spinner istället
                   </div>
               }
               
@@ -56,7 +60,7 @@ const HomePage = () => {
               {
                 (community) ? <ScrollList data={community}/> 
                 : <div className="text-center">
-                    <h3>There was a problem fetching data 😢</h3>
+                    <h3>No data to be shown 😢</h3>
                     {/* Visa loading spinner istället */}
                   </div>
               }
