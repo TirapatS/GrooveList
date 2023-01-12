@@ -12,7 +12,7 @@ const HomePage = () => {
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
   const [newReleases, setNewReleases] = useState(null)
-  // Fetch data from backend
+  // Fetch data from backend TODO
   const community = false;
   
   const fetchAllData = async () => {
@@ -69,7 +69,7 @@ const HomePage = () => {
 
       { largeDevice && (
         <>
-          <div className="flex">
+          <div className="flex h-screen">
             <LargeDeviceNav/>
             <div className="ml-10 mt-4">
               <SearchBar/>
