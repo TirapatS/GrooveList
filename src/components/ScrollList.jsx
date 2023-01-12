@@ -22,7 +22,6 @@ const CardList = ({data}) => {
                     })}
                 </div>
             </div>
-            <button className="text-GLwhite right-2.5 bottom-2.5 bg-gray-600 font-body rounded-lg text-sm px-4 py-2 mb-5">View all</button> 
         </>
     )
 }
