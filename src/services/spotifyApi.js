@@ -118,6 +118,20 @@ const getPlaylistInfo = async (id) => {
     }
 }
 
+const getSearchRes = async (item) => {
+    const accessToken = await getAuth()
+
+    try {  
+        const response = await axios.get(baseUrl + `https://api.spotify.com/v1/search?q=${item}&type=track%2Cartist&limit=10`, { 
+            headers: {
+            'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        return response 
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 const exports = {
     getNewRelease,
@@ -125,7 +139,8 @@ const exports = {
     getCategory,
     getCategoryInfo,
     getPlaylist,
-    getPlaylistInfo
+    getPlaylistInfo,
+    getSearchRes
 }
 
 export default exports
