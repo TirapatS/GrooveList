@@ -78,7 +78,7 @@ const HomePage = () => {
             <LargeDeviceNav/>
             <div className="ml-10 mt-4">
               <SearchBar/>
-              <div className="my-5 mx-2 laptop:w-[500px]">
+              <div className="my-5 ml-2 ">
                 <h1 className="font-extrabold text-xl">New releases</h1>
                 {
                   (newReleases) ? <ScrollList data={newReleases}/> 
