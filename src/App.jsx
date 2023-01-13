@@ -4,15 +4,14 @@ import HomePage from './pages/HomePage';
 import ExplorePage from './pages/ExplorePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import RecentlyPlayedPage from './pages/RecentlyPlayedPage';
 import CommunityPage from './pages/CommunityPage';
 import AccountPage from './pages/AccountPage';
 import './assets/css/generic.css'
-
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CategoryPage from './pages/CategoryPage';
 import PlaylistPage from './pages/PlaylistPage';
+import FavouritesPage from './pages/FavouritesPage';
 
 
 function App() {
@@ -28,7 +27,7 @@ function App() {
         <Route path="/community" element={<CommunityPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
-        <Route path="/favourites" element={<RecentlyPlayedPage/>}/>
+        <Route path="/favourites" element={<FavouritesPage/>}/>
         <Route path="/account" element={<AccountPage/>}/>
 
       </Routes>
