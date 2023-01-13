@@ -120,7 +120,7 @@ const ExplorePage = () => {
 
             { largeDevice && (
                 <>
-                    <div className="flex">
+                    <div className="flex h-screen">
                         <LargeDeviceNav/>
                         <div className="ml-10 mt-4">
                             <SearchBar/>
