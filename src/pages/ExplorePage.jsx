@@ -5,7 +5,6 @@ import { deviceWidthState } from "../atoms/global"
 import CardList from "../components/CardList"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
-import SearchBar from "../components/SearchBar"
 import SpotifyApi from '../services/spotifyApi'
 
 const ExplorePage = () => {
@@ -76,7 +75,6 @@ const ExplorePage = () => {
                 <>
                     <div>
                         <SmallDeviceNav/>
-                        <SearchBar/>
 
                         <div className="my-5 mx-2">
                             <h1 className="font-extrabold text-xl">Explore Categories</h1>
@@ -123,7 +121,6 @@ const ExplorePage = () => {
                     <div className="flex h-screen">
                         <LargeDeviceNav/>
                         <div className="ml-10 mt-4">
-                            <SearchBar/>
                             <div className="my-5 mx-2 laptop:w-[500px]">
                                 <h1 className="font-extrabold text-xl">Explore Categories</h1>
                                 {
