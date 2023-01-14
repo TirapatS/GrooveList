@@ -1,9 +1,8 @@
-import { useEffect } from "react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 
-const SearchBar = () => {
+const SearchBar = ({ onSubmit }) => {
 
   const [searchParams, setSearchParams] = useSearchParams()
   const search = searchParams.get('search')
@@ -16,17 +15,16 @@ const SearchBar = () => {
       return
     }
 
-    console.log(ref.current.value)
+    onSubmit(ref.current.value)
     setSearchParams({ search: ref.current.value })
-
-    useEffect(() => {
-      
-
-    }, [search])
   }
 
+  useEffect(() => {
+    onSubmit(search)
+  }, [search])
+
   return (
-    <form onSubmit={(e) => handleSearch(e)}>   
+    <form onSubmit={handleSearch}>   
         <div className="relative laptop:w-[52rem]">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>

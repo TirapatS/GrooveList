@@ -15,12 +15,25 @@ const HomePage = () => {
   const [newReleases, setNewReleases] = useState(null)
   const [community, setCommunity] = useState(null)
   const { data } = useCommunity('community-albums')
+  const [userSearch, setUserSearch] = useState(null)
+  const [search, setSearch] = useState(null)
   
   const fetchAllData = async () => {
     const getNewReleases = await SpotifyApi.getNewRelease()
     setNewReleases(getNewReleases.albums.items)
   }
-  
+
+  const searchSubmit = async (search) => {
+
+    if(!search) {
+      return 
+    } else {
+      const res = await SpotifyApi.getSearchRes(search)
+      setUserSearch(res.data.tracks.items)
+      setSearch(search)
+    }
+  }
+
   useEffect(()=> {
     if(width < 1024) {
       setSmallDevice(width)
@@ -41,9 +54,20 @@ const HomePage = () => {
         <>
           <div>
             <SmallDeviceNav/>
-            <SearchBar/>
+            <SearchBar onSubmit={searchSubmit} />
 
             <div className="my-5 mx-2">
+
+              
+              {
+                (userSearch) ? 
+                <>
+                  <h1 className="font-extrabold text-xl">Results: {search}</h1>
+                    <ScrollList data={userSearch}/> 
+                </>
+                : null
+              }
+
               <h1 className="font-extrabold text-xl">New releases</h1>
               {
                 (newReleases) ? <ScrollList data={newReleases}/> 
@@ -75,7 +99,7 @@ const HomePage = () => {
           <div className="flex h-screen">
             <LargeDeviceNav/>
             <div className="ml-10 mt-4">
-              <SearchBar/>
+              <SearchBar onSubmit={searchSubmit} />
               <div className="my-5 ml-2 ">
                 <h1 className="font-extrabold text-xl">New releases</h1>
                 {

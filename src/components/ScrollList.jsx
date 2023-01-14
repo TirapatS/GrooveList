@@ -2,7 +2,7 @@
 const CardList = ({data}) => {
 
     let liked = false
-
+    console.log(data)
     return (
         <>
             <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
@@ -10,11 +10,21 @@ const CardList = ({data}) => {
                     {data.map((item) => {
                        return (
                             <div className="my-3 flex justify-around items-center" key={item.id}>
-                                <img
-                                className="w-[89px] laptop:w-[200px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
-                                src={item.images[0].url}
-                                alt={item.name + 'thumbnail'}
-                                />
+                                
+                                {
+                                    (item.images) ?
+                                    <img
+                                        className="w-[89px] laptop:w-[200px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
+                                        src={item.images[0].url}
+                                        alt={item.name + 'thumbnail'}
+                                    /> 
+                                    : 
+                                    <img
+                                        className="w-[89px] laptop:w-[200px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
+                                        src={item.album.images[0].url}
+                                        alt={item.name + 'thumbnail'}
+                                    />
+                                }
 
                                 <div className="laptop:w-[200px] w-[100px] content-center">
                                     <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
