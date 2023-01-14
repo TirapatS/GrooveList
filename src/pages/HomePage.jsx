@@ -35,8 +35,6 @@ const HomePage = () => {
     fetchAllData()
   }, [])
 
-  console.log(newReleases)
-
   return (
     <>
       { smallDevice && (
