@@ -1,9 +1,22 @@
+import { toast } from "react-toastify"
+import { useAuthContext } from "../contexts/AuthContext"
 
 
 const CreateAlbumModal = () => {
+
+    const { currentUser } = useAuthContext()
+        
+    const checkUser = (e) => {
+        e.preventDefault()
+        if(!currentUser) {
+            toast.error('You must be logged in to use this feature')
+            return
+        }
+    }
+
     return (
         <>
-            <button data-modal-target="album-modal" data-modal-toggle="album-modal" className="block bg-gray-700 w-[60px] h-[69px] flex items-center justify-center rounded-xl my-3" type="button">
+            <button onClick={(e) => checkUser(e)} data-modal-target="album-modal" data-modal-toggle="album-modal" className="block bg-gray-700 w-[60px] h-[69px] flex items-center justify-center rounded-xl my-3" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#f9f9f9" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>

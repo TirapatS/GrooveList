@@ -34,10 +34,6 @@ const PlaylistPage = () => {
         }
     }
 
-    const handleClick = () => {
-
-    }
-
     useEffect(()=> {
         if(width < 1024) {
           setSmallDevice(width)
@@ -61,7 +57,7 @@ const PlaylistPage = () => {
                             {
                                 (playlist) ? 
                                 <div>
-                                    <ShowcasePlaylist data={playlist} handleClick={handleClick}/> 
+                                    <ShowcasePlaylist data={playlist}/> 
                                 </div>
                                 : 
                                 <div className="text-center">
@@ -85,7 +81,7 @@ const PlaylistPage = () => {
                                 {
                                 (playlist) ? 
                                 <>
-                                    <ShowcasePlaylist data={playlist} handleClick={handleClick}/> 
+                                    <ShowcasePlaylist data={playlist}/> 
                                 </>
                                 
                                 : 
