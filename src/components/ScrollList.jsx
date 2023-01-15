@@ -1,9 +1,12 @@
 import { toast } from "react-toastify"
 import { useAuthContext } from "../contexts/AuthContext"
+import useFavourites from "../hooks/useFavourites"
 
-const CardList = ({data}) => {
+
+const ScrollList = ({ data }) => {
     const { currentUser } = useAuthContext()
-    
+    const [ docs, loading, error ] = useFavourites(currentUser)
+
     let liked = false
     
     const handleFavourite = (item, e) => {
@@ -14,6 +17,8 @@ const CardList = ({data}) => {
         }
         console.log(item)
     }
+
+
 
     return (
         <>
@@ -69,4 +74,4 @@ const CardList = ({data}) => {
     )
 }
 
-export default CardList
+export default ScrollList

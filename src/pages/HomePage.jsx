@@ -6,7 +6,6 @@ import SearchBar from "../components/SearchBar.jsx";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import ScrollList from "../components/ScrollList.jsx";
 import SpotifyApi from '../services/spotifyApi'
-import useCommunity from "../hooks/useCommunity.js";
 
 const HomePage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
@@ -14,7 +13,6 @@ const HomePage = () => {
   const width = useRecoilValue(deviceWidthState)
   const [newReleases, setNewReleases] = useState(null)
   const [community, setCommunity] = useState(null)
-  const { data } = useCommunity('community-albums')
   const [userSearch, setUserSearch] = useState(null)
   const [search, setSearch] = useState(null)
   
@@ -39,10 +37,6 @@ const HomePage = () => {
       setSmallDevice(width)
     }else {
       setLargeDevice(width)
-    }
-    
-    if(data.length > 1) {
-      setCommunity(data)
     }
 
     fetchAllData()

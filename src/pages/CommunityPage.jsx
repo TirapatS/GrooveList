@@ -5,7 +5,6 @@ import CreateAlbumModal from "../components/CreateAlbumModal.jsx";
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import ScrollList from "../components/ScrollList.jsx";
-import useCommunity from "../hooks/useCommunity.js";
 
 
 const CommunityPage = () => {
@@ -13,8 +12,7 @@ const CommunityPage = () => {
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
   const [community, setCommunity] = useState(null)
-  const { data } = useCommunity('community-albums')
-  
+    
   useEffect(()=> {
     if(width < 1024) {
       setSmallDevice(width)
@@ -22,9 +20,6 @@ const CommunityPage = () => {
       setLargeDevice(width)
     }
     
-    if(data.length > 1) {
-      setCommunity(data)
-    }
   }, [])
 
   return (

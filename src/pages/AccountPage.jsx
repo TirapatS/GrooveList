@@ -5,7 +5,7 @@ import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
-import useUsers from '../hooks/useUsers'
+
 
 const AccountPage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
@@ -14,15 +14,6 @@ const AccountPage = () => {
   const navigate = useNavigate()
   const { currentUser, userEmail, displayName, logout} = useAuthContext()
 
-  const { data: users, } = useUsers('users')
-  
-  const GLmember = users.filter(i => i.GLmember === true)
-  
-  let thisUser
-  if (currentUser) {
-    thisUser = GLmember.filter(user => user.email === currentUser.email)
-    
-  }
   const logoutUser = async () => {
     await logout()
     navigate('/')
@@ -48,7 +39,7 @@ const AccountPage = () => {
                     <h1 className="p-2 text-xl underline">Account</h1>
                     <div className="ml-1 p-2">
                       {
-                        (thisUser) ? 
+                        (currentUser) ? 
                           <div>
                             <h1 className="my-5 border-b-2">Username: {displayName}</h1>
                             <h1 className="border-b-2">Email: {userEmail}</h1>
@@ -59,8 +50,8 @@ const AccountPage = () => {
                       {
                         (!currentUser) ?
                           <div className="flex justify-around mt-3">
-                            <button className="border-b-2 mt-2 p-2 text-l">Log In</button>
-                            <button className="border-b-2 mt-2 p-2 text-l">Sign In</button>
+                            <button className="border-b-2 mt-2 p-2 text-l" onClick={() => navigate('/login')}>Log In</button>
+                            <button className="border-b-2 mt-2 p-2 text-l" onClick={() => navigate('/signup')}>Sign Up</button>
                           </div>
                         : 
                           <div className="flex justify-center mt-3">
@@ -88,7 +79,7 @@ const AccountPage = () => {
                         </div>
                         <div className="ml-1 p-2">
                           {
-                            (thisUser) ? 
+                            (currentUser) ? 
                               <div>
                                 <h1 className="my-5 border-b-2">Username: {displayName}</h1>
                                 <h1 className="border-b-2">Email: {userEmail}</h1>

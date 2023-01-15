@@ -6,7 +6,6 @@ import ScrollList from '../components/ScrollList'
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
-import useUsers from '../hooks/useUsers'
 
 const FavouritesPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -14,16 +13,6 @@ const FavouritesPage = () => {
     const width = useRecoilValue(deviceWidthState)
     const navigate = useNavigate()
     const { currentUser, userEmail} = useAuthContext()
-
-    const { data: users, } = useUsers('users')
-  
-    const GLmember = users.filter(i => i.GLmember === true)
-    
-    let thisUser
-    if (currentUser) {
-        thisUser = GLmember.filter(user => user.email === currentUser.email)
-        
-    }
 
     let data = false;
 
