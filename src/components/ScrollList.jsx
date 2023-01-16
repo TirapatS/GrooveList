@@ -6,7 +6,8 @@ import useFavourites from "../hooks/useFavourites"
 const ScrollList = ({ data }) => {
     const { currentUser } = useAuthContext()
     const [ docs, loading, error ] = useFavourites(currentUser)
-
+    console.log(docs)
+    
     let liked = false
     
     const handleFavourite = (item, e) => {

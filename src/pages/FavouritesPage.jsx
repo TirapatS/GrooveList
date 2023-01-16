@@ -4,17 +4,23 @@ import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import ScrollList from '../components/ScrollList'
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
+import useFavourites from "../hooks/useFavourites"
 
 const FavouritesPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
     const [largeDevice, setLargeDevice] = useState(null)
     const width = useRecoilValue(deviceWidthState)
-    const navigate = useNavigate()
-    const { currentUser, userEmail} = useAuthContext()
+    
+    const { currentUser } = useAuthContext()
+    const [ docs, loading, error ] = useFavourites(currentUser)
+    let data
 
-    let data = false;
+    if(docs.length > 1) {
+        data = docs
+    }
+
+    
 
     useEffect(()=> {
         if(width < 1024) {
@@ -38,7 +44,10 @@ const FavouritesPage = () => {
                             {
                                 (data) ? 
                                 <ScrollList data={data}/>
-                                : null
+                                : 
+                                <div className="mt-[200px] text-center">
+                                    <h1>You need to be logged in to see your favorites</h1>
+                                </div>
                             }
                         </div>
                     </div>
