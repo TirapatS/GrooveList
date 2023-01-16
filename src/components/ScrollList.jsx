@@ -22,15 +22,17 @@ const ScrollList = ({ data }) => {
 
 
     return (
-        <>
-            <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
-                <div id="slider" className="max-h-[120px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
-                    {data.map((item) => {
-                       return (
-                            <div className="my-3 flex justify-around items-center" key={item.id}>
+        <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
+
+            {loading && <h1>Loading...</h1>}
+
+            <div id="slider" className="max-h-[120px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
+                {!loading && data.map((item) => {
+                    return (
+                        <div className="my-3 flex justify-around items-center" key={item.id}>
                                 
-                                {
-                                    (item.images) ?
+                            {
+                                (item.images) ?
                                     <img
                                         className="w-[89px] laptop:w-[200px] inline-block p-2 cursor-pointer hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
                                         src={item.images[0].url}
@@ -42,7 +44,7 @@ const ScrollList = ({ data }) => {
                                         src={item.album.images[0].url}
                                         alt={item.name + 'thumbnail'}
                                     />
-                                }
+                            }
 
                                 <div className="laptop:w-[200px] w-[100px] content-center">
                                     <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
@@ -66,12 +68,11 @@ const ScrollList = ({ data }) => {
                                         </div>
                                     } 
                                 </div>
-                           </div>
-                       )
-                    })}
-                </div>
+                        </div>
+                    )
+                })}
             </div>
-        </>
+        </div>
     )
 }
 
