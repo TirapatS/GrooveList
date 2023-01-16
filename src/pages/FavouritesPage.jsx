@@ -16,7 +16,7 @@ const FavouritesPage = () => {
     const [ docs, loading, error ] = useFavourites(currentUser)
     let data
 
-    if(docs.length > 1) {
+    if(docs && docs.length > 1) {
         data = docs
     }
 
@@ -46,8 +46,12 @@ const FavouritesPage = () => {
                                 <ScrollList data={data}/>
                                 : 
                                 <div className="mt-[200px] text-center">
-                                    <h1>You need to be logged in to see your favorites</h1>
+                                    <h1>You have yet added favourite tracks!</h1>
                                 </div>
+                            }
+
+                            {
+                                (!currentUser) ? <h1>You need to be logged in to see your favorites</h1> : null
                             }
                         </div>
                     </div>
