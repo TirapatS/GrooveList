@@ -7,7 +7,6 @@ import { isThisTrackLiked } from "../utils/isThisTrackLiked"
 const ScrollList = ({ data }) => {
     const { currentUser } = useAuthContext()
     const [ docs, loading, error ] = useFavourites(currentUser)
-    console.log(docs)
 
     return (
         <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">

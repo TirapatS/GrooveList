@@ -13,7 +13,6 @@ export const handleFavourites = async (item, currentUser, docs, e) => {
     }
     
     const liked = isThisTrackLiked(docs, item.id)
-    console.log(liked)
 
     if(!liked) {
         const docRef = doc(db, `users/${currentUser.email}/favourites`, item.id)
