@@ -18,12 +18,12 @@ const LoginPage = () => {
         e.preventDefault()
 
 		try {
-			/* setLoading(true) */
 			await login(emailRef.current.value, passwordRef.current.value)
 			navigate('/home')
 
 		} catch (err) {
-			setLoading(false)
+			/* setLoading(false) */
+            toast.error(err.message)
 		}
     }
 
