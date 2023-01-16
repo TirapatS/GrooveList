@@ -1,10 +1,28 @@
+import { useState } from "react"
 import { toast } from "react-toastify"
 import { useAuthContext } from "../contexts/AuthContext"
+import SearchBar from "./SearchBar"
+import SpotifyApi from '../services/spotifyApi'
 
 
 const CreateAlbumModal = () => {
 
     const { currentUser } = useAuthContext()
+    const [trackSearch, setTrackSearch] = useState(null)
+
+    const searchSubmit = async (search) => {
+
+        if(!search) {
+            return 
+        } else {
+            const res = await SpotifyApi.getSearchRes(search)
+            setTrackSearch(res.data.tracks.items)
+        }
+    }
+
+    const addNewAlbum = () => {
+
+    }
         
     const checkUser = (e) => {
         e.preventDefault()
@@ -30,13 +48,13 @@ const CreateAlbumModal = () => {
                         </button>
                         <div className="px-6 py-6 lg:px-8">
                             <h3 className="mb-4 text-xl font-body text-GLwhite">Create an album</h3>
-                            <form className="space-y-6" action="#">
+                            <form className="space-y-6" onSubmit={addNewAlbum} action="#">
                                 <div>
                                     <label className="block mb-2 text-sm font-body text-GLwhite">Album Name</label>
                                     <input type="name" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" required/>
                                 </div>
                                 <div>
-                                    {/* TODO put search input here to search after tracks to add  */}
+                                    <SearchBar onSubmit={searchSubmit}/>
                                 </div>
                                 
                                 <button type="submit" className="w-full text-white bg-gray-600 hover:bg-gray-500 font-body rounded-lg text-sm px-5 py-2.5 text-center">Create album</button>
