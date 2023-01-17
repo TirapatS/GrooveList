@@ -17,13 +17,10 @@ const HomePage = () => {
   const [userSearch, setUserSearch] = useState(null)
   const [search, setSearch] = useState(null)
   const [ docs, loading, error ] = useCommunityAlbums()
-  const [dataLoading, setDataLoading] = useState(false)
 
   const fetchAllData = async () => {
-    setDataLoading(true)
     const getNewReleases = await SpotifyApi.getNewRelease()
     setNewReleases(getNewReleases.albums.items)
-    setDataLoading(false)
   }
 
   const searchSubmit = async (search) => {
@@ -110,7 +107,7 @@ const HomePage = () => {
                 <h1 className="font-extrabold text-xl">New releases</h1>
 
                 {
-                  (!dataLoading && newReleases) ? <ScrollList data={newReleases}/> 
+                  (newReleases) ? <ScrollList data={newReleases}/> 
                   : <div className="text-center">
                       <h3>There was a problem fetching data</h3>
                     </div>

@@ -55,13 +55,8 @@ const CategoryPage = () => {
                         <div className="my-5 mx-2">
                             <h1 className="font-extrabold text-xl">Explore {title}</h1>
 
-                            {loading && 
-                            <div className="text-center">
-                                <h3>Loading..</h3>
-                            </div>}
-
                             {
-                                (!loading && category) ? 
+                                (category) ? 
                                 <div className="mb-20">
                                     <CardList data={category} handleClick={handleClick}/>
                                 </div>
@@ -84,13 +79,8 @@ const CategoryPage = () => {
                             <div className="my-5 mx-2 laptop:w-[500px]">
                                 <h1 className="font-extrabold text-xl">Explore {title}</h1>
 
-                                {loading && 
-                                <div className="text-center">
-                                    <h3>Loading..</h3>
-                                </div>}
-
                                 {
-                                (!loading && category) ? 
+                                (category) ? 
                                 <div className="mb-20">
                                     <CardList data={category} handleClick={handleClick}/> 
                                 </div>
