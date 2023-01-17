@@ -50,8 +50,20 @@ const CreateAlbumModal = () => {
 
     const addToAlbum = (track, e) => {
         e.preventDefault()
-        setAddTrack(currentData => [...currentData, track])
+
+        let tracks = []
+        addTrack.map((item) => {
+            tracks.push(item.id)
+        })
+
+        if(tracks.includes(track.id)) {
+            toast.error('This track has already been added')
+            return
+        } else {
+            setAddTrack(currentData => [...currentData, track])
+        }
     }
+    
 
     const removeFromAlbum = (track, e) => {
         e.preventDefault()
@@ -76,7 +88,7 @@ const CreateAlbumModal = () => {
             /* await addDoc(docRef, {
             name: albumName,
             trackList: addTrack,
-            uid: auth.currentUser.uid
+            uid: auth.currentUser.uid TODO
         }) */
 
         toast.success('Album created!')
@@ -147,9 +159,8 @@ const CreateAlbumModal = () => {
                                                     <p className="text-GLwhite text-m ml-2 truncate">{item.artists[0].name}</p>
                                                 </div>
 
-                                        
                                                 <div className="mt-2">
-                                                    <button onClick={(e) => addToAlbum(item, e)} className="text-GLwhite text-m font-extrabold py-2 px-3 rounded-lg hover:scale-105 ease-in-out duration-300 bg-gray-600 ">Add</button>
+                                                    <button onClick={(e) => addToAlbum(item, e)} className="text-GLwhite text-m font-extrabold py-2 px-3 rounded-lg hover:scale-105 ease-in-out duration-300 bg-gray-600">Add</button>
                                                 </div>
                                         
                                         </div>
@@ -164,8 +175,6 @@ const CreateAlbumModal = () => {
                         }
 
                         <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
-
-                            {stateLoading && <h1 className="text-m p-4 rounded-lg">Loading...</h1>}
 
                             <div id="slider" className="max-h-[120px] laptop:max-h-[120px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                                 {!stateLoading && addTrack.map((item) => {
