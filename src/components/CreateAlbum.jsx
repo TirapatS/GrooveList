@@ -1,4 +1,4 @@
-import { addDoc, doc, setDoc } from "firebase/firestore"
+import { addDoc, collection, doc, setDoc } from "firebase/firestore"
 import { useRef, useState } from "react"
 import { toast } from "react-toastify"
 import { useAuthContext } from "../contexts/AuthContext"
@@ -26,13 +26,13 @@ const CreateAlbumModal = () => {
     const searchRef = useRef()
 
     const nameSubmit = () => {
-        console.log("docs",docs)
+
         if(nameRef.length < 2) {
             toast.error('Album name should be more than 2 characters')
             return
         }
-
-        setAlbumName(nameRef)
+    
+        setAlbumName(nameRef.current.value)
         toast.success('Name is valid')
     }
 
@@ -82,14 +82,12 @@ const CreateAlbumModal = () => {
             toast.error('Enter a valid name and tracks/songs')
             return
         }
-
-        const docRef = doc(db, 'communityAlbums')
-        console.log(docRef)
-            /* await addDoc(docRef, {
-            name: albumName,
+        
+        await addDoc(collection(db, 'albums'), {
             trackList: addTrack,
-            uid: auth.currentUser.uid TODO
-        }) */
+            name: albumName,
+            uid: auth.currentUser.uid
+        })
 
         toast.success('Album created!')
     }
