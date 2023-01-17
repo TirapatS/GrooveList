@@ -69,8 +69,7 @@ const CategoryPage = () => {
                                 </div>
                                 : 
                                 <div className="text-center">
-                                    <h3>There was a problem fetching data 😢</h3>
-                                    {/* Visa loading spinner istället */}
+                                    <h3>There was a problem fetching data</h3>
                                 </div>
                             }
                         </div>
@@ -117,8 +116,7 @@ const CategoryPage = () => {
                                 
                                 : 
                                 <div className="text-center">
-                                    <h3>There was a problem fetching data 😢</h3>
-                                    {/* Visa loading spinner istället */}
+                                    <h3>There was a problem fetching data</h3>
                                 </div>
                                 }
                             </div>

@@ -69,7 +69,6 @@ const HomePage = () => {
                 (newReleases) ? <ScrollList data={newReleases}/> 
                 : <div className="text-center">
                     <h3>There was a problem fetching data</h3>
-                    Visa loading spinner istället
                   </div>
               }
               
