@@ -1,7 +1,7 @@
 import useGetCollection from "./useCollectionData"
 
 const useCommunityAlbums = () => {
-    return useGetCollection(`communityAlbums`)
+    return useGetCollection(`albums`)
 
 }
 

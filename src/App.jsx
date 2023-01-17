@@ -12,6 +12,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import CategoryPage from './pages/CategoryPage';
 import PlaylistPage from './pages/PlaylistPage';
 import FavouritesPage from './pages/FavouritesPage';
+import CommunityTracksPage from './pages/CommunityTracksPage';
+
 
 
 function App() {
@@ -25,11 +27,11 @@ function App() {
         <Route path="/category/:id" element={<CategoryPage/>}/>
         <Route path="/playlist/:id" element={<PlaylistPage/>}/>
         <Route path="/community" element={<CommunityPage/>}/>
+        <Route path="/community/:name" element={<CommunityTracksPage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
         <Route path="/favourites" element={<FavouritesPage/>}/>
         <Route path="/account" element={<AccountPage/>}/>
-
       </Routes>
 
       <ToastContainer

@@ -6,16 +6,18 @@ import SearchBar from "../components/SearchBar.jsx";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import ScrollList from "../components/ScrollList.jsx";
 import SpotifyApi from '../services/spotifyApi'
+import CommunityScrollList from "../components/CommunityScrollList.jsx";
+import useCommunityAlbums from "../hooks/useCommunityAlbums.js";
 
 const HomePage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
   const [newReleases, setNewReleases] = useState(null)
-  const [community, setCommunity] = useState(null)
   const [userSearch, setUserSearch] = useState(null)
   const [search, setSearch] = useState(null)
-  
+  const [ docs, loading, error ] = useCommunityAlbums()
+
   const fetchAllData = async () => {
     const getNewReleases = await SpotifyApi.getNewRelease()
     setNewReleases(getNewReleases.albums.items)
@@ -66,7 +68,7 @@ const HomePage = () => {
               {
                 (newReleases) ? <ScrollList data={newReleases}/> 
                 : <div className="text-center">
-                    <h3>There was a problem fetching data 😢</h3>
+                    <h3>There was a problem fetching data</h3>
                     Visa loading spinner istället
                   </div>
               }
@@ -75,10 +77,9 @@ const HomePage = () => {
             <div className="my-5 mx-2">
               <h1 className="font-extrabold text-xl">Community Albums</h1>
               {
-                (community) ? <ScrollList data={community}/> 
+                (!loading && docs) ? <CommunityScrollList data={docs}/> 
                 : <div className="text-center">
-                    <h3>No data to be shown 😢</h3>
-                    {/* Visa loading spinner istället */}
+                    <h3>No data to be shown</h3>
                   </div>
               }
               
@@ -108,8 +109,7 @@ const HomePage = () => {
                 {
                   (newReleases) ? <ScrollList data={newReleases}/> 
                   : <div className="text-center">
-                      <h3>There was a problem fetching data 😢</h3>
-                      {/* Visa loading spinner istället */}
+                      <h3>There was a problem fetching data</h3>
                     </div>
                 }
                 
@@ -117,10 +117,9 @@ const HomePage = () => {
               <div className="my-5 mx-2 w-[500px]">
                 <h1 className="font-extrabold text-xl">Community Albums</h1>
                 {
-                  (community) ? <ScrollList data={community}/> 
+                  (!loading && docs) ? <CommunityScrollList data={docs}/> 
                   : <div className="text-center mt-4">
-                      <h3>There is no data 😢</h3>
-                      {/* Visa loading spinner istället */}
+                      <h3>There is no data</h3>
                     </div>
                 }
               </div>
