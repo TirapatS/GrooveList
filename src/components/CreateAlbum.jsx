@@ -86,10 +86,13 @@ const CreateAlbumModal = () => {
         await addDoc(collection(db, 'albums'), {
             trackList: addTrack,
             name: albumName,
-            uid: auth.currentUser.uid
+            uid: auth.currentUser.uid,
+            displayName: auth.currentUser.displayName
         })
 
         toast.success('Album created!')
+
+        window.location.reload()
     }
 
     const cancelForm = () => {
