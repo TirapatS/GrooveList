@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { deviceWidthState } from '../atoms/global.js'
-import CreateAlbumModal from "../components/CreateAlbumModal.jsx";
+import CreateAlbum from "../components/CreateAlbum.jsx";
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import ScrollList from "../components/ScrollList.jsx";
@@ -31,7 +31,7 @@ const CommunityPage = () => {
             <div className="my-5 mx-2">
 
               <h1 className="font-extrabold text-xl"> Your albums</h1>
-                <CreateAlbumModal/>
+                <CreateAlbum/>
                 
                 {
                   (community) ? <ScrollList data={community}/> 
@@ -62,7 +62,7 @@ const CommunityPage = () => {
             <div className="ml-10 mt-4">
               <div className="my-5 mx-2 w-[500px]">
                 <h1 className="font-extrabold text-xl"> Your albums</h1>
-                  <CreateAlbumModal/>
+                  <CreateAlbum/>
                   
                   {
                     (community) ? <ScrollList data={community}/> 
