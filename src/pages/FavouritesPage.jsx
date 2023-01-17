@@ -2,10 +2,10 @@ import { useRecoilValue } from "recoil"
 import { deviceWidthState } from "../atoms/global"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
-import ScrollList from '../components/ScrollList'
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../contexts/AuthContext"
 import useFavourites from "../hooks/useFavourites"
+import FavouritesList from "../components/FavouritesList"
 
 const FavouritesPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -14,13 +14,6 @@ const FavouritesPage = () => {
     
     const { currentUser } = useAuthContext()
     const [ docs, loading, error ] = useFavourites(currentUser)
-    let data
-
-    if(docs && docs.length > 1) {
-        data = docs
-    }
-
-    
 
     useEffect(()=> {
         if(width < 1024) {
@@ -30,6 +23,7 @@ const FavouritesPage = () => {
         }
     
     }, [])
+
 
     return (
         <>
@@ -42,8 +36,8 @@ const FavouritesPage = () => {
                             <h1 className="text-xl">Your Favourites</h1>
 
                             {
-                                (data) ? 
-                                <ScrollList data={data}/>
+                                (!loading && docs) ? 
+                                <FavouritesList data={docs}/>
                                 : 
                                 <div className="mt-[200px] text-center">
                                     <h1>You have yet added favourite tracks!</h1>
@@ -64,8 +58,23 @@ const FavouritesPage = () => {
                     <div className="flex h-screen">
                         <LargeDeviceNav/>
     
-                        <div className="laptop:w-[500px]">
-                        
+                        <div className="laptop:w-full laptop:ml-5">
+                            <div className="text-GLwhite font-extrabold mt-[20px]">
+                                <h1 className="text-xl">Your Favourites</h1>
+
+                                {
+                                    (!loading && docs) ? 
+                                    <FavouritesList data={docs}/>
+                                    : 
+                                    <div className="mt-[200px] text-center">
+                                        <h1>You have yet added favourite tracks!</h1>
+                                    </div>
+                                }
+
+                                {
+                                    (!currentUser) ? <h1>You need to be logged in to see your favorites</h1> : null
+                                }
+                            </div>
                         </div>
                     </div>
                 </>
