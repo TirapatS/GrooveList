@@ -24,14 +24,12 @@ const CreateAlbumModal = () => {
     const searchRef = useRef()
 
     const nameSubmit = () => {
-
-        if(nameRef.length < 2) {
-            toast.error('Album name should be more than 2 characters')
+        if(nameRef.current.value.length < 3) {
+            toast.error('Album name too short')
             return
         }
-    
-        setAlbumName(nameRef.current.value)
         toast.success('Name is valid')
+        setAlbumName(nameRef.current.value)
     }
 
     const searchSubmit = async (e) => {
