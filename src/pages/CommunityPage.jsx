@@ -4,15 +4,16 @@ import { deviceWidthState } from '../atoms/global.js'
 import CreateAlbum from "../components/CreateAlbum.jsx";
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
-import ScrollList from "../components/ScrollList.jsx";
+import CommunityScrollList from "../components/CommunityScrollList.jsx";
+import useCommunityAlbums from "../hooks/useCommunityAlbums.js";
 
 
 const CommunityPage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
-  const [community, setCommunity] = useState(null)
-    
+  const [ docs, loading] = useCommunityAlbums()
+  
   useEffect(()=> {
     if(width < 1024) {
       setSmallDevice(width)
@@ -34,19 +35,17 @@ const CommunityPage = () => {
                 <CreateAlbum/>
                 
                 {
-                  (community) ? <ScrollList data={community}/> 
+                  (docs) ? <CommunityScrollList data={docs}/> 
                   : <div className="text-center mb-[100px]">
-                      <h3>No data to be shown 😢</h3>
-                      {/* Visa loading spinner istället TODO */}
+                      <h3>No data to be shown</h3>
                     </div>
                 }
 
               <h1 className="font-extrabold text-xl">Explore Community Albums</h1>
                 {
-                  (community) ? <ScrollList data={community}/> 
+                  (docs) ? <CommunityScrollList data={docs}/> 
                   : <div className="text-center">
-                      <h3>No data to be shown 😢</h3>
-                      {/* Visa loading spinner istället */}
+                      <h3>No data to be shown</h3>
                     </div>
                 }
             </div>
@@ -57,7 +56,7 @@ const CommunityPage = () => {
 
       { largeDevice && (
         <>
-          <div className="flex h-screen">
+          <div className="flex h-full-screen]">
             <LargeDeviceNav/>
             <div className="ml-10 mt-4">
               <div className="my-5 mx-2 w-[500px]">
@@ -65,19 +64,17 @@ const CommunityPage = () => {
                   <CreateAlbum/>
                   
                   {
-                    (community) ? <ScrollList data={community}/> 
+                    (docs) ? <CommunityScrollList data={docs}/> 
                     : <div className="text-center mb-[100px]">
-                        <h3>No data to be shown 😢</h3>
-                        {/* Visa loading spinner istället */}
+                        <h3>No data to be shown</h3>
                       </div>
                   }
 
-                <h1 className="font-extrabold text-xl">Explore Community Albums</h1>
+                <h1 className="font-extrabold text-xl mt-[69px]">Explore Community Albums</h1>
                 {
-                  (community) ? <ScrollList data={community}/> 
+                  (docs) ? <CommunityScrollList data={docs}/> 
                   : <div className="text-center mt-4">
-                      <h3>There is no data 😢</h3>
-                      {/* Visa loading spinner istället */}
+                      <h3>There is no data</h3>
                     </div>
                 }
               </div>

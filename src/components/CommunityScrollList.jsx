@@ -17,7 +17,7 @@ const CommunityScrollList = ({ data }) => {
                           <div className="my-3 flex justify-around items-center" key={idx}>
                                   
                             <img
-                              className="w-[89px] laptop:w-[200px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
+                              className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
                               src={item.trackList[0].album.images[0].url ? item.trackList[0].album.images[0].url : item.trackList[0].images[0].url}
                               alt={item.name + 'thumbnail'}
                               onClick={(e) => viewAlbumTracks(item, e)}

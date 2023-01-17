@@ -17,10 +17,13 @@ const HomePage = () => {
   const [userSearch, setUserSearch] = useState(null)
   const [search, setSearch] = useState(null)
   const [ docs, loading, error ] = useCommunityAlbums()
+  const [dataLoading, setDataLoading] = useState(false)
 
   const fetchAllData = async () => {
+    setDataLoading(true)
     const getNewReleases = await SpotifyApi.getNewRelease()
     setNewReleases(getNewReleases.albums.items)
+    setDataLoading(false)
   }
 
   const searchSubmit = async (search) => {
@@ -53,7 +56,6 @@ const HomePage = () => {
             <SearchBar onSubmit={searchSubmit} />
 
             <div className="my-5 mx-2">
-
               
               {
                 (userSearch) ? 
@@ -65,6 +67,7 @@ const HomePage = () => {
               }
 
               <h1 className="font-extrabold text-xl">New releases</h1>
+
               {
                 (newReleases) ? <ScrollList data={newReleases}/> 
                 : <div className="text-center">
@@ -105,8 +108,9 @@ const HomePage = () => {
                 }
 
                 <h1 className="font-extrabold text-xl">New releases</h1>
+
                 {
-                  (newReleases) ? <ScrollList data={newReleases}/> 
+                  (!dataLoading && newReleases) ? <ScrollList data={newReleases}/> 
                   : <div className="text-center">
                       <h3>There was a problem fetching data</h3>
                     </div>
@@ -115,6 +119,7 @@ const HomePage = () => {
               </div>
               <div className="my-5 mx-2 w-[500px]">
                 <h1 className="font-extrabold text-xl">Community Albums</h1>
+
                 {
                   (!loading && docs) ? <CommunityScrollList data={docs}/> 
                   : <div className="text-center mt-4">

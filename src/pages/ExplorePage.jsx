@@ -78,8 +78,14 @@ const ExplorePage = () => {
 
                         <div className="my-5 mx-2">
                             <h1 className="font-extrabold text-xl">Explore Categories</h1>
+
+                            {loading && 
+                            <div className="text-center">
+                                <h3>Loading..</h3>
+                            </div>}
+
                             {
-                                (categories) ? 
+                                (!loading && categories) ? 
                                 <div>
                                     <CardList data={categories} handleClick={handleClick}/> 
                                     <div className="mb-20">   
@@ -122,8 +128,14 @@ const ExplorePage = () => {
                         <div className="ml-10 mt-4">
                             <div className="my-5 mx-2 laptop:w-[500px]">
                                 <h1 className="font-extrabold text-xl">Explore Categories</h1>
+
+                                {loading && 
+                                <div className="text-center">
+                                    <h3>Loading..</h3>
+                                </div>}
+
                                 {
-                                (categories) ? 
+                                (!loading && categories) ? 
                                 <>
                                     <CardList data={categories} handleClick={handleClick}/> 
                                     <div className="mb-20">   
