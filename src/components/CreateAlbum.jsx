@@ -3,14 +3,12 @@ import { useRef, useState } from "react"
 import { toast } from "react-toastify"
 import { useAuthContext } from "../contexts/AuthContext"
 import { auth, db } from "../firebase"
-import useCommunityAlbums from "../hooks/useCommunityAlbums"
 import SpotifyApi from '../services/spotifyApi'
 
 
 const CreateAlbumModal = () => {
 
     const { currentUser } = useAuthContext()
-    const [docs, loading, error] = useCommunityAlbums()
     const [trackSearch, setTrackSearch] = useState(null)
     const [initiateCreateAlbumForm, setInitiateCreateAlbumForm] = useState(false)
     const [stateLoading, setStateLoading] = useState(false)
@@ -92,11 +90,17 @@ const CreateAlbumModal = () => {
 
         toast.success('Album created!')
 
-        window.location.reload()
+        setAddTrack([])
+        setTrackSearch(null)
+        setAlbumName(null)
+        setInitiateCreateAlbumForm(false)
     }
 
     const cancelForm = () => {
-        window.location.reload()
+        setAddTrack([])
+        setTrackSearch(null)
+        setAlbumName(null)
+        setInitiateCreateAlbumForm(false)
     }
         
     const checkUser = (e) => {
