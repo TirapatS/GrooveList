@@ -16,12 +16,10 @@ const CommunityPage = () => {
   const [ docs, loading] = useCommunityAlbums()
   const { currentUser } = useAuthContext()
 
-  console.log(docs)
   let thisUsersAlbum
   if(!loading && docs) {
     thisUsersAlbum = docs.filter(user => user.uid === currentUser.uid)
   }
-  console.log("filter",thisUsersAlbum)
   
   useEffect(()=> {
     if(width < 1024) {
@@ -65,7 +63,7 @@ const CommunityPage = () => {
 
       { largeDevice && (
         <>
-          <div className="flex h-full-screen]">
+          <div className="flex h-full-screen">
             <LargeDeviceNav/>
             <div className="ml-10 mt-4">
               <div className="my-5 mx-2 w-[500px]">

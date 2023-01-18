@@ -7,14 +7,13 @@ const CommunityTracksList = ({ data }) => {
 
     const { currentUser } = useAuthContext()
     const [ docs, loading, error ] = useFavourites(currentUser)    
-    console.log(data)
-
+    
     return (
         <div className="bg-GLblack rounded-lg mb-[100px] laptop:mb-[0px]">
 
             {loading && <h1>Loading...</h1>}
 
-            <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-6 grid-flow-col p-2 laptop:p-0">
+            <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-4 grid-cols-4 p-2 laptop:p-0">
                 {!loading && data.map((item) => {
                     return (
                         <div className="my-3 laptop:mt-3 laptop:mb-6 laptop:w-[120px] w-[69px] h-[200px]" key={item.id}>

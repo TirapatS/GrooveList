@@ -13,7 +13,7 @@ const ShowcasePlaylist = ({ data }) => {
 
             {loading && <h1>Loading...</h1>}
 
-            <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-6 grid-flow-col p-2 laptop:p-0">
+            <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-4 grid-cols-4 p-2 laptop:p-0">
                 {!loading && data.items.map((item) => {
                     return (
                         <div className="my-3 laptop:w-[120px] w-[69px] h-[200px]" key={item.track.name}>
