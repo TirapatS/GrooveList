@@ -76,7 +76,7 @@ const CategoryPage = () => {
                     <div className="flex h-screen">
                         <LargeDeviceNav/>
                         <div className="ml-10 mt-4">
-                            <div className="my-5 mx-2 laptop:w-[500px]">
+                            <div className="my-5 mx-2 laptop:w-full-screen">
                                 <h1 className="font-extrabold text-xl">Explore {title}</h1>
 
                                 {
