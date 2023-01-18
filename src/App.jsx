@@ -13,6 +13,8 @@ import CategoryPage from './pages/CategoryPage';
 import PlaylistPage from './pages/PlaylistPage';
 import FavouritesPage from './pages/FavouritesPage';
 import CommunityTracksPage from './pages/CommunityTracksPage';
+import AudioPlayer from './components/audio/AudioPlayer';
+import { songs } from '../src/songs'
 
 
 
@@ -33,6 +35,8 @@ function App() {
         <Route path="/favourites" element={<FavouritesPage/>}/>
         <Route path="/account" element={<AccountPage/>}/>
       </Routes>
+
+      <AudioPlayer tracks={songs}/>
 
       <ToastContainer
         position="top-right"
