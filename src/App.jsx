@@ -36,7 +36,9 @@ function App() {
         <Route path="/account" element={<AccountPage/>}/>
       </Routes>
 
-      <AudioPlayer tracks={songs}/>
+      <div className="laptop:mt-[235px] mt-[300px]">
+        <AudioPlayer tracks={songs}/>
+      </div>
 
       <ToastContainer
         position="top-right"
