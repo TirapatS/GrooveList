@@ -6,6 +6,7 @@ import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import CommunityScrollList from "../components/CommunityScrollList.jsx";
 import useCommunityAlbums from "../hooks/useCommunityAlbums.js";
+import { useAuthContext } from "../contexts/AuthContext.jsx";
 
 
 const CommunityPage = () => {
@@ -13,6 +14,14 @@ const CommunityPage = () => {
   const [largeDevice, setLargeDevice] = useState(null)
   const width = useRecoilValue(deviceWidthState)
   const [ docs, loading] = useCommunityAlbums()
+  const { currentUser } = useAuthContext()
+
+  console.log(docs)
+  let thisUsersAlbum
+  if(!loading && docs) {
+    thisUsersAlbum = docs.filter(user => user.uid === currentUser.uid)
+  }
+  console.log("filter",thisUsersAlbum)
   
   useEffect(()=> {
     if(width < 1024) {
@@ -35,7 +44,7 @@ const CommunityPage = () => {
                 <CreateAlbum/>
                 
                 {
-                  (docs) ? <CommunityScrollList data={docs}/> 
+                  (thisUsersAlbum) ? <CommunityScrollList data={thisUsersAlbum}/> 
                   : <div className="text-center mb-[100px]">
                       <h3>No data to be shown</h3>
                     </div>
@@ -64,7 +73,7 @@ const CommunityPage = () => {
                   <CreateAlbum/>
                   
                   {
-                    (docs) ? <CommunityScrollList data={docs}/> 
+                    (thisUsersAlbum) ? <CommunityScrollList data={thisUsersAlbum}/> 
                     : <div className="text-center mb-[100px]">
                         <h3>No data to be shown</h3>
                       </div>
