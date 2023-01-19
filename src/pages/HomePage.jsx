@@ -8,6 +8,8 @@ import ScrollList from "../components/ScrollList.jsx";
 import SpotifyApi from '../services/spotifyApi'
 import CommunityScrollList from "../components/CommunityScrollList.jsx";
 import useCommunityAlbums from "../hooks/useCommunityAlbums.js";
+import AudioPlayer from "../components/audio/AudioPlayer.jsx";
+import { songs } from "../songs"
 
 const HomePage = () => {
   const [smallDevice, setSmallDevice] = useState(null)
@@ -128,6 +130,10 @@ const HomePage = () => {
           </div>
         </>
       )}
+
+      <div className="laptop:mt-[235px] mt-[400px]">
+          <AudioPlayer tracks={songs}/>
+      </div>
 
     </>
   )

@@ -26,7 +26,7 @@ const AudioPlayer = ({ tracks }) => {
     }
 
     return (
-        <div className="fixed rounded-lg inset-x-0 bottom-20 laptop:bottom-0 font-extrabold bg-gray-600 bg-opacity-80 pb-5">
+        <div className="fixed rounded-lg inset-x-0 bottom-[60px] laptop:bottom-0 font-extrabold bg-gray-600 bg-opacity-80 pb-5">
             <div className="">
                 <div className="flex p-5 laptop:px-[600px] items-center justify-around">
                     <img

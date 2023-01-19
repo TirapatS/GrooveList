@@ -6,6 +6,8 @@ import SpotifyApi from '../services/spotifyApi'
 import { useEffect, useState } from "react"
 import ShowcasePlaylist from "../components/ShowcasePlaylist"
 import { useNavigate, useParams } from "react-router-dom"
+import AudioPlayer from "../components/audio/AudioPlayer"
+import { songs } from '../songs'
 
 const PlaylistPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -93,6 +95,9 @@ const PlaylistPage = () => {
                     </div>
                 </>
             )}
+            <div className="laptop:mt-[235px] mt-[400px]">
+                <AudioPlayer tracks={songs}/>
+            </div>
         </>
     )
 }

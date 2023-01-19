@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { useRecoilValue } from "recoil";
 import { deviceWidthState } from '../atoms/global.js'
+import AudioPlayer from "../components/audio/AudioPlayer.jsx";
 import CommunityTracksList from "../components/CommunityTracksList.jsx";
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
-import ShowcasePlaylist from '../components/ShowcasePlaylist'
+import { songs } from "../songs"
 
 const CommunityTracksPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -72,6 +73,9 @@ const CommunityTracksPage = () => {
                     </div>
                 </>
             )}
+            <div className="laptop:mt-[235px] mt-[400px]">
+                <AudioPlayer tracks={songs}/>
+            </div>
         </>
     )
 }
