@@ -6,8 +6,7 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../contexts/AuthContext"
 import useFavourites from "../hooks/useFavourites"
 import FavouritesList from "../components/FavouritesList"
-import AudioPlayer from "../components/audio/AudioPlayer"
-import { songs } from "../songs"
+
 
 const FavouritesPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -81,10 +80,6 @@ const FavouritesPage = () => {
                     </div>
                 </>
             )}
-
-            <div className="laptop:mt-[235px] mt-[400px]">
-                <AudioPlayer tracks={songs}/>
-            </div>
         </>
     )
 }

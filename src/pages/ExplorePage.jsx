@@ -2,12 +2,10 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useRecoilValue } from "recoil"
 import { deviceWidthState } from "../atoms/global"
-import AudioPlayer from "../components/audio/AudioPlayer"
 import CardList from "../components/CardList"
 import LargeDeviceNav from "../components/navs/LargeDeviceNav"
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import SpotifyApi from '../services/spotifyApi'
-import { songs } from "../songs"
 
 const ExplorePage = () => {
 
@@ -165,10 +163,6 @@ const ExplorePage = () => {
                     </div>
                 </>
             )}
-
-            <div className="laptop:mt-[235px] mt-[400px]">
-                <AudioPlayer tracks={songs}/>
-            </div>
         </>
     )
 }

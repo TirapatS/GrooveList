@@ -7,8 +7,6 @@ import SmallDeviceNav from "../components/navs/SmallDeviceNav"
 import CommunityScrollList from "../components/CommunityScrollList.jsx";
 import useCommunityAlbums from "../hooks/useCommunityAlbums.js";
 import { useAuthContext } from "../contexts/AuthContext.jsx";
-import AudioPlayer from "../components/audio/AudioPlayer.jsx";
-import { songs } from "../songs"
 
 
 const CommunityPage = () => {
@@ -97,11 +95,6 @@ const CommunityPage = () => {
           </div>
         </>
       )}
-
-      <div className="laptop:mt-[235px] mt-[400px]">
-          <AudioPlayer tracks={songs}/>
-      </div>
-
     </>
   )
 }

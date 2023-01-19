@@ -6,8 +6,7 @@ import SpotifyApi from '../services/spotifyApi'
 import { useEffect, useState } from "react"
 import CardList from "../components/CardList"
 import { useNavigate, useParams } from "react-router-dom"
-import AudioPlayer from "../components/audio/AudioPlayer"
-import { songs } from "../songs"
+
 
 const CategoryPage = () => {
     const [smallDevice, setSmallDevice] = useState(null)
@@ -97,9 +96,6 @@ const CategoryPage = () => {
                     </div>
                 </>
             )}
-            <div className="laptop:mt-[235px] mt-[400px]">
-                <AudioPlayer tracks={songs}/>
-            </div>
         </>
     )
 }
