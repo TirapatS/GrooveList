@@ -130,7 +130,9 @@ const HomePage = () => {
           </div>
         </>
       )}
-      <AudioPlayer tracks={songs} />
+      <div className="laptop:mt-[235px] mt-[400px]">
+        <AudioPlayer tracks={songs} />
+      </div>
     </>
   )
 }
