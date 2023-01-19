@@ -116,7 +116,7 @@ const HomePage = () => {
                 }
                 
               </div>
-              <div className="my-5 mx-2 w-[500px]">
+              <div className="my-5 mx-2 laptop:w-4/5 w-[500px]">
                 <h1 className="font-extrabold text-xl">Community Albums</h1>
 
                 {
@@ -130,7 +130,7 @@ const HomePage = () => {
           </div>
         </>
       )}
-      <div className="laptop:mt-[235px] mt-[400px]">
+      <div className="laptop:mt-[275px] mt-[400px]">
         <AudioPlayer tracks={songs} />
       </div>
     </>
