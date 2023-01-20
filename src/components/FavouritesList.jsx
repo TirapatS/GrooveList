@@ -21,13 +21,13 @@ const FavouritesList = ({ data }) => {
                             {
                                 (item.item.images) ?
                                     <img
-                                        className="w-[89px] laptop:w-[200px] inline-block p-2 cursor-pointer rounded-2xl"
+                                        className="w-[89px] laptop:w-[150px] inline-block p-2 cursor-pointer rounded-2xl"
                                         src={item.item.images[0].url}
                                         alt={item.item.name + 'thumbnail'}
                                     /> 
                                     : 
                                     <img
-                                        className="w-[89px] laptop:w-[200px] inline-block p-2 cursor-pointer rounded-2xl"
+                                        className="w-[89px] laptop:w-[150px] inline-block p-2 cursor-pointer rounded-2xl"
                                         src={item.item.album.images[0].url}
                                         alt={item.item.name + 'thumbnail'}
                                     />

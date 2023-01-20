@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useRecoilValue } from "recoil";
 import { deviceWidthState } from '../atoms/global.js'
+import AnimatedPage from "../components/animations/AnimatedPage.jsx";
 import CommunityTracksList from "../components/CommunityTracksList.jsx";
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
 import SmallDeviceNav from "../components/navs/SmallDeviceNav"
@@ -25,54 +26,56 @@ const CommunityTracksPage = () => {
     }, [])
 
     return (
-        <>
-            { smallDevice && (
-                <>
-                    <div>
-                        <SmallDeviceNav/>
+        <AnimatedPage>
+            <>
+                { smallDevice && (
+                    <>
+                        <div>
+                            <SmallDeviceNav/>
 
-                        <div className="my-5 mx-2">
-                            <h1 className="font-extrabold text-2xl">Explore {playlist.name} by {playlist.displayName}</h1>
-                            {
-                                (playlist) ? 
-                                <div>
-                                    <CommunityTracksList data={playlist.trackList}/> 
-                                </div>
-                                : 
-                                <div className="text-center">
-                                    <h3>There was a problem fetching data</h3>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </>
-
-            )}
-
-            { largeDevice && (
-                <>
-                    <div className="flex">
-                        <LargeDeviceNav/>
-                        <div className="ml-10 mt-4">
-                            <div className="my-5 mx-2 laptop:w-[500px]">
-                                <h1 className="font-extrabold text-xl">Explore {playlist.name} by {playlist.displayName}</h1>
+                            <div className="my-5 mx-2">
+                                <h1 className="font-extrabold text-2xl">Explore {playlist.name} by {playlist.displayName}</h1>
                                 {
-                                (playlist) ? 
-                                <>
-                                    <CommunityTracksList data={playlist.trackList}/> 
-                                </>
-                                
-                                : 
-                                <div className="text-center">
-                                    <h3>There was a problem fetching data</h3>
-                                </div>
+                                    (playlist) ? 
+                                    <div>
+                                        <CommunityTracksList data={playlist.trackList}/> 
+                                    </div>
+                                    : 
+                                    <div className="text-center">
+                                        <h3>There was a problem fetching data</h3>
+                                    </div>
                                 }
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </>
+                    </>
+
+                )}
+
+                { largeDevice && (
+                    <>
+                        <div className="flex">
+                            <LargeDeviceNav/>
+                            <div className="ml-10 mt-4">
+                                <div className="my-5 mx-2 laptop:w-[500px]">
+                                    <h1 className="font-extrabold text-xl">Explore {playlist.name} by {playlist.displayName}</h1>
+                                    {
+                                    (playlist) ? 
+                                    <>
+                                        <CommunityTracksList data={playlist.trackList}/> 
+                                    </>
+                                    
+                                    : 
+                                    <div className="text-center">
+                                        <h3>There was a problem fetching data</h3>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </>
+        </AnimatedPage>
     )
 }
 

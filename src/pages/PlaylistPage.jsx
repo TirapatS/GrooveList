@@ -6,6 +6,8 @@ import SpotifyApi from '../services/spotifyApi'
 import { useEffect, useState } from "react"
 import ShowcasePlaylist from "../components/ShowcasePlaylist"
 import { useNavigate, useParams } from "react-router-dom"
+import AnimatedPage from "../components/animations/AnimatedPage"
+
 
 
 const PlaylistPage = () => {
@@ -47,54 +49,56 @@ const PlaylistPage = () => {
 
     
     return (
-        <>
-            { smallDevice && (
-                <>
-                    <div>
-                        <SmallDeviceNav/>
+        <AnimatedPage>
+            <>
+                { smallDevice && (
+                    <>
+                        <div>
+                            <SmallDeviceNav/>
 
-                        <div className="my-5 mx-2">
-                            <h1 className="font-extrabold text-2xl">Explore {title}</h1>
-                            {
-                                (playlist) ? 
-                                <div>
-                                    <ShowcasePlaylist data={playlist}/> 
-                                </div>
-                                : 
-                                <div className="text-center">
-                                    <h3>There was a problem fetching data</h3>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </>
-
-            )}
-
-            { largeDevice && (
-                <>
-                    <div className="flex">
-                        <LargeDeviceNav/>
-                        <div className="ml-10 mt-4">
-                            <div className="my-5 mx-2 laptop:w-full-screen">
-                                <h1 className="font-extrabold text-xl">Explore {title}</h1>
+                            <div className="my-5 mx-2">
+                                <h1 className="font-extrabold text-2xl">Explore {title}</h1>
                                 {
-                                (playlist) ? 
-                                <>
-                                    <ShowcasePlaylist data={playlist}/> 
-                                </>
-                                
-                                : 
-                                <div className="text-center">
-                                    <h3>There was a problem fetching data</h3>
-                                </div>
+                                    (playlist) ? 
+                                    <div>
+                                        <ShowcasePlaylist data={playlist}/> 
+                                    </div>
+                                    : 
+                                    <div className="text-center">
+                                        <h3>There was a problem fetching data</h3>
+                                    </div>
                                 }
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </>
+                    </>
+
+                )}
+
+                { largeDevice && (
+                    <>
+                        <div className="flex">
+                            <LargeDeviceNav/>
+                            <div className="ml-10 mt-4">
+                                <div className="my-5 mx-2 laptop:w-full-screen">
+                                    <h1 className="font-extrabold text-xl">Explore {title}</h1>
+                                    {
+                                    (playlist) ? 
+                                    <>
+                                        <ShowcasePlaylist data={playlist}/> 
+                                    </>
+                                    
+                                    : 
+                                    <div className="text-center">
+                                        <h3>There was a problem fetching data</h3>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </>
+        </AnimatedPage>
     )
 }
 

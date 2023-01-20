@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { useAuthContext } from "../contexts/AuthContext"
 import useFavourites from "../hooks/useFavourites"
 import FavouritesList from "../components/FavouritesList"
+import AnimatedPage from "../components/animations/AnimatedPage"
 
 
 const FavouritesPage = () => {
@@ -27,39 +28,13 @@ const FavouritesPage = () => {
 
 
     return (
-        <>
-            { smallDevice && (
-                <>
-                    <div>
-                        <SmallDeviceNav/>
-    
-                        <div className="text-GLwhite font-extrabold mt-[20px]">
-                            <h1 className="text-xl">Your Favourites</h1>
-
-                            {
-                                (!loading && docs) ? 
-                                <FavouritesList data={docs}/>
-                                : 
-                                <div className="mt-[200px] text-center">
-                                    <h1>You have yet added favourite tracks!</h1>
-                                </div>
-                            }
-
-                            {
-                                (!currentUser) ? <h1>You need to be logged in to see your favorites</h1> : null
-                            }
-                        </div>
-                    </div>
-                </>
-    
-            )}
-    
-            { largeDevice && (
-                <>
-                    <div className="flex h-screen">
-                        <LargeDeviceNav/>
-    
-                        <div className="laptop:w-full laptop:ml-5">
+        <AnimatedPage>
+            <>
+                { smallDevice && (
+                    <>
+                        <div>
+                            <SmallDeviceNav/>
+        
                             <div className="text-GLwhite font-extrabold mt-[20px]">
                                 <h1 className="text-xl">Your Favourites</h1>
 
@@ -77,10 +52,38 @@ const FavouritesPage = () => {
                                 }
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </>
+                    </>
+        
+                )}
+        
+                { largeDevice && (
+                    <>
+                        <div className="flex h-screen">
+                            <LargeDeviceNav/>
+        
+                            <div className="laptop:w-full laptop:ml-5">
+                                <div className="text-GLwhite font-extrabold mt-[20px]">
+                                    <h1 className="text-xl">Your Favourites</h1>
+
+                                    {
+                                        (!loading && docs) ? 
+                                        <FavouritesList data={docs}/>
+                                        : 
+                                        <div className="mt-[200px] text-center">
+                                            <h1>You have yet added favourite tracks!</h1>
+                                        </div>
+                                    }
+
+                                    {
+                                        (!currentUser) ? <h1>You need to be logged in to see your favorites</h1> : null
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </>
+        </AnimatedPage>
     )
 }
 

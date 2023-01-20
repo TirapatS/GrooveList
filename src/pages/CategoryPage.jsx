@@ -6,6 +6,7 @@ import SpotifyApi from '../services/spotifyApi'
 import { useEffect, useState } from "react"
 import CardList from "../components/CardList"
 import { useNavigate, useParams } from "react-router-dom"
+import AnimatedPage from "../components/animations/AnimatedPage"
 
 
 const CategoryPage = () => {
@@ -47,56 +48,58 @@ const CategoryPage = () => {
     
 
     return (
-        <>
-            { smallDevice && (
-                <>
-                    <div>
-                        <SmallDeviceNav/>
+        <AnimatedPage>
+            <>
+                { smallDevice && (
+                    <>
+                        <div>
+                            <SmallDeviceNav/>
 
-                        <div className="my-5 mx-2">
-                            <h1 className="font-extrabold text-xl">Explore {title}</h1>
-
-                            {
-                                (category) ? 
-                                <div className="mb-20">
-                                    <CardList data={category} handleClick={handleClick}/>
-                                </div>
-                                : 
-                                <div className="text-center">
-                                    <h3>There was a problem fetching data</h3>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </>
-
-            )}
-
-            { largeDevice && (
-                <>
-                    <div className="flex h-screen">
-                        <LargeDeviceNav/>
-                        <div className="ml-10 mt-4">
-                            <div className="my-5 mx-2 laptop:w-full-screen">
+                            <div className="my-5 mx-2">
                                 <h1 className="font-extrabold text-xl">Explore {title}</h1>
 
                                 {
-                                (category) ? 
-                                <div className="mb-20">
-                                    <CardList data={category} handleClick={handleClick}/> 
-                                </div>
-                                
-                                : 
-                                <div className="text-center">
-                                    <h3>There was a problem fetching data</h3>
-                                </div>
+                                    (category) ? 
+                                    <div className="mb-20">
+                                        <CardList data={category} handleClick={handleClick}/>
+                                    </div>
+                                    : 
+                                    <div className="text-center">
+                                        <h3>There was a problem fetching data</h3>
+                                    </div>
                                 }
                             </div>
                         </div>
-                    </div>
-                </>
-            )}
-        </>
+                    </>
+
+                )}
+
+                { largeDevice && (
+                    <>
+                        <div className="flex h-screen">
+                            <LargeDeviceNav/>
+                            <div className="ml-10 mt-4">
+                                <div className="my-5 mx-2 laptop:w-full-screen">
+                                    <h1 className="font-extrabold text-xl">Explore {title}</h1>
+
+                                    {
+                                    (category) ? 
+                                    <div className="mb-20">
+                                        <CardList data={category} handleClick={handleClick}/> 
+                                    </div>
+                                    
+                                    : 
+                                    <div className="text-center">
+                                        <h3>There was a problem fetching data</h3>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                )}
+            </>
+        </AnimatedPage>
     )
 }
 
