@@ -31,9 +31,9 @@ const DeleteAlbum = () => {
             {
                 (collection) ? 
                 <div className="mt-5 mb-[50px] laptop:mb-[20px]">
-                    <label className="block mb-2 laptop:text-xl font-body text-GLwhite">Fill album name to delete</label>
-                        <div className="flex">
-                            <input type="search" id="default-search" className="block w-[200px] text-m rounded-xl bg-GLwhite text-GLblack font-extrabold" required ref={ref}/>
+                    <label className="block mb-2 laptop:text-xl font-body text-GLwhite">Enter album name to delete</label>
+                        <div className="flex justify-around">
+                            <input type="search" id="default-search" className="block w-full text-m rounded-xl bg-gray-600 text-GLwhite font-extrabold" required ref={ref}/>
                             <button onClick={(e) => (removeAlbum(e))} className="text-GLwhite bg-GLblack hover:bg-gray-700 font-body rounded-lg text-m py-2 px-4 font-extrabold">Delete</button>
                         </div>
                 </div> : null

@@ -16,3 +16,21 @@ input[type=range] {
     transition: background 0.2s ease;
     cursor: pointer;
 }
+
+.spinImg {
+    animation-play-state: running;
+    animation-name: spin;
+    animation-iteration-count: infinite;
+    animation-duration: 30000ms;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

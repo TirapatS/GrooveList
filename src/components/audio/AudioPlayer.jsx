@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import AudioControls from './AudioControls'
 
-
 const AudioPlayer = ({ tracks }) => {
 
     const [trackIndex, setTrackIndex] = useState(0)
@@ -106,16 +105,17 @@ const AudioPlayer = ({ tracks }) => {
 
     return (
         <div className="fixed rounded-lg inset-x-0 bottom-[60px] laptop:bottom-0 font-extrabold bg-gray-600 bg-opacity-80 pb-5">
-            <div className="">
-                <div className="flex p-5 laptop:px-[600px] items-center justify-around">
+            <div>
+                <div className="flex p-2 laptop:px-[600px] items-center justify-around">
                     <img
-                        className="w-[120px] laptop:w-[120px] inline-block p-2 rounded-full"
+                        className="spinImg w-[120px] laptop:w-[120px] inline-block p-2 rounded-full"
                         src={image}
-                        alt={`track image for ${name} by ${artist}`}
+                        alt={`song image for ${name} by ${artist}`}
+                        style= { (isPlaying) ? { animationPlayState: "running"} : { animationPlayState: "paused"} }
                     />
                     <div>
-                        <h2>{name}</h2>
-                        <h4 className="text-sm mt-2">{artist}</h4>
+                        <h2 className="text-xl">{name}</h2>
+                        <h4 className="text-m mt-2">{artist}</h4>
                     </div>
                 </div>
                 <AudioControls
