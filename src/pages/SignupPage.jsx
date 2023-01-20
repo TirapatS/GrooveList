@@ -24,7 +24,6 @@ const SignupForm = () => {
 		}
 
 		try {
-            /* setLoading(true) */
             await signup(displayNameRef.current.value, emailRef.current.value, passwordRef.current.value)
 			navigate('/home')
 
