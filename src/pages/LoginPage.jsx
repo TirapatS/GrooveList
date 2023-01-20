@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import AnimatedPage from "../components/animations/AnimatedPage"
@@ -9,21 +9,18 @@ const LoginPage = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
     
-    // TODO with animations
-    /* const [loading, setLoading] = useState(null) */
 
     const { login } = useAuthContext()
 	const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
 		try {
+            
 			await login(emailRef.current.value, passwordRef.current.value)
 			navigate('/home')
 
 		} catch (err) {
-			/* setLoading(false) */
             toast.error(err.message)
 		}
     }

@@ -11,9 +11,6 @@ const SignupForm = () => {
     const passwordRef = useRef()
     const confirmPasswordRef = useRef()
 
-    // TODO with animations
-    /* const [loading, setLoading] = useState(null) */
-
     const navigate = useNavigate()
     const { signup } = useAuthContext()
 
