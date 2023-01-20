@@ -94,7 +94,7 @@ const HomePage = () => {
 
         { largeDevice && (
           <>
-            <div className="flex h-screen">
+            <div className="flex h-full-screen">
               <LargeDeviceNav/>
               <div className="ml-10 mt-4">
                 <SearchBar onSubmit={searchSubmit} />
@@ -132,7 +132,7 @@ const HomePage = () => {
             </div>
           </>
         )}
-        <div className="laptop:mt-[275px] mt-[400px]">
+        <div className="laptop:mt-[300px] mt-[400px]">
           <AudioPlayer tracks={songs} />
         </div>
       </>
