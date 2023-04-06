@@ -61,7 +61,7 @@ const FavouritesPage = () => {
                         <div className="flex h-screen">
                             <LargeDeviceNav/>
         
-                            <div className="laptop:w-full laptop:ml-5">
+                            <div className="w-full ml-5">
                                 <div className="text-GLwhite font-extrabold mt-[20px]">
                                     <h1 className="text-xl">Your Favourites</h1>
 

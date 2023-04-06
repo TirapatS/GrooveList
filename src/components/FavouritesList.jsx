@@ -33,7 +33,7 @@ const FavouritesList = ({ data }) => {
                                     />
                             }
 
-                                <div className="laptop:w-[200px] w-[100px] content-center">
+                                <div className="laptop:w-[200px] w-[120px] content-center">
                                     <p className="text-GLwhite text-m ml-2 laptop:text-xl truncate font-extrabold">{item.item.name}</p>
                                     <p className="text-GLwhite text-m laptop:text-xl ml-2 truncate">{item.item.artists[0].name}</p>
                                 </div>
