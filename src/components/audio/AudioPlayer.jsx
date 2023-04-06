@@ -106,7 +106,7 @@ const AudioPlayer = ({ tracks }) => {
     return (
         <div className="fixed rounded-lg inset-x-0 bottom-[60px] laptop:bottom-0 font-extrabold bg-gray-600 bg-opacity-80 pb-5">
             <div>
-                <div className="flex p-2 laptop:px-[600px] items-center justify-around">
+                <div className="flex p-2 items-center justify-around px-[100px] tablet:px-[200px] laptop:px-[400px]">
                     <img
                         className="spinImg w-[120px] laptop:w-[120px] inline-block p-2 rounded-full"
                         src={image}
@@ -124,7 +124,7 @@ const AudioPlayer = ({ tracks }) => {
                     onNextClick={nextTrack}
                     onPlayPauseClick={setIsPlaying}
                 />
-                <div className="laptop:px-[500px] mt-4 px-4">
+                <div className="mt-4 px-[80px] tablet:px-[180px] laptop:px-[380px]">
                     <input
                         type="range"
                         value={trackProgress}
@@ -138,7 +138,7 @@ const AudioPlayer = ({ tracks }) => {
                         style={{background: trackStyling}}
                     />
                 </div>
-                <div className="flex items-center laptop:px-[700px] mt-4 px-[50px]">
+                <div className="flex items-center mt-4 px-[100px] tablet:px-[200px] laptop:px-[400px]">
                     
                     {
                         (volume >= 1) ? 
