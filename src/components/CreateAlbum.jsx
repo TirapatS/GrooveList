@@ -32,9 +32,11 @@ const CreateAlbumModal = () => {
     }
 
     const searchSubmit = async (e) => {
+
         setStateLoading(true)
-        if(!searchRef) {
+        if(!searchRef.current.value) {
             setStateLoading(false)
+            toast.error('Please enter your search')
             return 
         } else {
             const res = await SpotifyApi.getSearchRes(searchRef.current.value)
@@ -142,7 +144,7 @@ const CreateAlbumModal = () => {
 
                             {stateLoading && <h1 className="text-m p-4 rounded-lg">Loading...</h1>}
 
-                            <div id="slider" className="max-h-[120px] laptop:max-h-[120px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
+                            <div id="slider" className="max-h-[320px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                                 {!stateLoading && trackSearch && trackSearch.map((item) => {
                                     return (
                                         <div className="my-3 flex justify-around items-center" key={item.id}>
@@ -184,7 +186,7 @@ const CreateAlbumModal = () => {
 
                         <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
 
-                            <div id="slider" className="max-h-[120px] laptop:max-h-[120px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
+                            <div id="slider">  
                                 {!stateLoading && addTrack.map((item) => {
                                     return (
                                         <div className="my-3 flex justify-around items-center" key={item.id}>
@@ -220,7 +222,7 @@ const CreateAlbumModal = () => {
                             </div>
                             </div>
 
-                        <div className="flex justify-around">
+                        <div className="flex justify-around mt-5">
                             
                             {
                                 (addTrack.length >= 1) ? <button onClick={(e) => addNewAlbum(e)} className="text-GLwhite text-m font-extrabold p-3 bg-gray-600 rounded-xl hover:scale-105 ease-in-out duration-300">Create album</button> : null

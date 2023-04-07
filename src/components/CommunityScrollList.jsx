@@ -11,7 +11,7 @@ const CommunityScrollList = ({ data }) => {
 
     return (
         <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
-              <div id="slider" className="max-h-[120px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
+              <div id="slider" className="max-h-[320px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                   {data.map((item, idx) => {
                       return (
                           <div className="my-3 flex justify-around items-center" key={idx}>
