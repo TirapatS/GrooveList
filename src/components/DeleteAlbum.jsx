@@ -2,6 +2,7 @@ import { deleteDoc, doc } from "firebase/firestore"
 import { useRef } from "react"
 import { useAuthContext } from "../contexts/AuthContext"
 import { db } from "../firebase"    
+import { toast } from "react-toastify"
 import useStreamCollection from "../hooks/useStreamCollection"
 
 
@@ -23,7 +24,12 @@ const DeleteAlbum = () => {
             findTheAlbum.push(tracks)
         })
         deleteThis = findTheAlbum.filter(title => title.name === ref.current.value)
-        await deleteDoc(doc(db, 'albums', deleteThis[0].id))
+        if(deleteThis.length !== 0) {
+            await deleteDoc(doc(db, 'albums', deleteThis[0].id))
+        }else {
+            toast.error('No such album exists in your library')
+        }
+        ref.current.value = ""
     }
 
     return (
