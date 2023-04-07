@@ -138,7 +138,7 @@ const AudioPlayer = ({ tracks }) => {
                         style={{background: trackStyling}}
                     />
                 </div>
-                <div className="flex items-center mt-4 px-[100px] tablet:px-[200px] laptop:px-[400px]">
+                <div className="flex items-center mt-4 px-[100px] tablet:px-[200px] laptop:px-[500px] desktop:px-[600px]">
                     
                     {
                         (volume >= 1) ? 
