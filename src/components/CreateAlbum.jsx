@@ -28,7 +28,6 @@ const CreateAlbumModal = () => {
             toast.error('Album name too short')
             return
         }
-        toast.success('Name is valid')
         setAlbumName(nameRef.current.value)
     }
 
@@ -125,13 +124,19 @@ const CreateAlbumModal = () => {
                             </div>
                         </div>
 
-                        <div className="mt-5">
-                            <label className="block mb-2 laptop:text-xl font-body text-GLwhite">Search for tracks to add </label>
-                            <div className="flex">
-                                <input type="search" id="default-search" className="block w-full text-m rounded-xl bg-GLwhite text-GLblack font-extrabold" required ref={searchRef}/>
-                                <button onClick={(e) => (searchSubmit(e))} className="text-GLwhite bg-GLblack hover:bg-gray-700 font-body rounded-lg text-m py-2 px-4 font-extrabold">Search</button>
+                        {
+                            (albumName) ? 
+                            
+                            <div className="mt-5">
+                                <label className="block mb-2 laptop:text-xl font-body text-GLwhite">Search for tracks to add </label>
+                                <div className="flex">
+                                    <input type="search" id="default-search" className="block w-full text-m rounded-xl bg-GLwhite text-GLblack font-extrabold" required ref={searchRef}/>
+                                    <button onClick={(e) => (searchSubmit(e))} className="text-GLwhite bg-GLblack hover:bg-gray-700 font-body rounded-lg text-m py-2 px-4 font-extrabold">Search</button>
+                                </div>
                             </div>
-                        </div>
+
+                            : null
+                        }
 
                         <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
 
