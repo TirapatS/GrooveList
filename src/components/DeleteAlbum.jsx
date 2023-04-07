@@ -18,6 +18,7 @@ const DeleteAlbum = () => {
 
     const removeAlbum = async (e) => {
         e.preventDefault()
+        ref.current.value = ""
         let deleteThis
         let findTheAlbum = []
         thisUsersAlbum.map((tracks) => {
@@ -29,7 +30,6 @@ const DeleteAlbum = () => {
         }else {
             toast.error('No such album exists in your library')
         }
-        ref.current.value = ""
     }
 
     return (
