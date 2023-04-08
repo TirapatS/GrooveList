@@ -133,6 +133,21 @@ const getSearchRes = async (item) => {
     }
 }
 
+const getMoreInfo = async (id) => {
+    const accessToken = await getAuth()
+
+    try {
+        const response = await axios.get(baseUrl + `albums/${id}`, {
+            headers: {
+                'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        return response
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const exports = {
     getNewRelease,
     getCategories,
@@ -140,7 +155,8 @@ const exports = {
     getCategoryInfo,
     getPlaylist,
     getPlaylistInfo,
-    getSearchRes
+    getSearchRes,
+    getMoreInfo
 }
 
 export default exports

@@ -14,6 +14,7 @@ import PlaylistPage from './pages/PlaylistPage';
 import FavouritesPage from './pages/FavouritesPage';
 import CommunityTracksPage from './pages/CommunityTracksPage';
 import { AnimatePresence } from 'framer-motion';
+import TrackInfoPage from './pages/TrackInfoPage';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/signup" element={<SignupPage/>}/>
           <Route path="/favourites" element={<FavouritesPage/>}/>
           <Route path="/account" element={<AccountPage/>}/>
+          <Route path="/track/:id" element={<TrackInfoPage/>}/>
         </Routes>
       </AnimatePresence>
 

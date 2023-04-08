@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import { useAuthContext } from "../contexts/AuthContext"
 import useFavourites from "../hooks/useFavourites"
 import { handleFavourites } from '../utils/handleFavourites'
@@ -7,6 +8,16 @@ import { isThisTrackLiked } from "../utils/isThisTrackLiked"
 const ScrollList = ({ data }) => {
     const { currentUser } = useAuthContext()
     const [ docs, loading, error ] = useFavourites(currentUser)
+    const navigate = useNavigate()
+
+    const navigateToTrack = (track) => {
+        if(track.id) {
+            sessionStorage.setItem('selectedTrack', track.id)
+            navigate(`/track/${track.id}`)
+        }else {
+            toast.error('There was a problem with getting track')
+        }
+    }
 
     return (
         <div className="relative my-5 bg-gray-600 bg-opacity-25 rounded-xl">
@@ -16,20 +27,24 @@ const ScrollList = ({ data }) => {
                     return (
                         <div className="my-3 flex justify-around items-center" key={item.id}>
                                 
-                            {
-                                (item.images) ?
-                                    <img
-                                        className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
-                                        src={item.images[0].url}
-                                        alt={item.name + 'thumbnail'}
-                                    /> 
-                                    : 
-                                    <img
-                                        className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
-                                        src={item.album.images[0].url}
-                                        alt={item.name + 'thumbnail'}
-                                    />
-                            }
+                            <div onClick={(e) => navigateToTrack(item)}>
+
+                                {
+                                    (item.images) ?
+                                        <img
+                                            className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
+                                            src={item.images[0].url}
+                                            alt={item.name + 'thumbnail'}
+                                        /> 
+                                        : 
+                                        <img
+                                            className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
+                                            src={item.album.images[0].url}
+                                            alt={item.name + 'thumbnail'}
+                                        />
+                                }
+
+                            </div>
 
                                 <div className="laptop:w-[200px] w-[100px] content-center">
                                     <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
