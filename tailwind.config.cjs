@@ -6,7 +6,12 @@ module.exports = {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateRows: {
+        //8 row grid
+        '8': 'repeat(8, minmax(0, 1fr))',
+      }
+    },
     fontFamily: {
       body: ['Heebo']
     },

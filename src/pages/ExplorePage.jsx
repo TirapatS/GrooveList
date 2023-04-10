@@ -122,8 +122,8 @@ const ExplorePage = () => {
                     <>
                         <div className="flex h-screen">
                             <LargeDeviceNav/>
-                            <div className="ml-10 mt-4">
-                                <div className="my-5 mx-2 laptop:w-full-screen">
+                            <div className=" mx-2 tablet:ml-10 mt-4 tablet:w-2/3">
+                                <div className="my-5 mx-2 w-[200px] laptop:w-full-screen">
                                     <h1 className="font-extrabold text-xl">Explore Categories</h1>
 
                                     {
@@ -131,7 +131,7 @@ const ExplorePage = () => {
                                     <>
                                         <CardList data={categories} handleClick={handleClick}/> 
                                         <div className="mb-20">   
-                                            <div className="flex flex-col items-center w-[669px]">
+                                            <div className="flex flex-col items-center tablet:w-[669px]">
 
                                                 <div className="inline-flex mt-2 xs:mt-0">
                                                     {
