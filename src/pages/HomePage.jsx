@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { deviceWidthState } from '../atoms/global.js'
 import LargeDeviceNav from "../components/navs/LargeDeviceNav";
@@ -25,6 +25,7 @@ const HomePage = () => {
     const getNewReleases = await SpotifyApi.getNewRelease()
     setNewReleases(getNewReleases.albums.items)
   }
+
 
   const searchSubmit = async (search) => {
 
@@ -96,7 +97,7 @@ const HomePage = () => {
           <>
             <div className="flex h-full-screen">
               <LargeDeviceNav/>
-              <div className="ml-10 mt-4">
+              <div className="mx-2 tablet:mx-10 mt-4 tablet:w-2/3">
                 <SearchBar onSubmit={searchSubmit} />
                 <div className="my-5 ml-2 ">
                   {
@@ -108,17 +109,19 @@ const HomePage = () => {
                     : null
                   }
 
-                  <h1 className="font-extrabold text-xl">New releases</h1>
+                  <div className="">
+                    <h1 className="font-extrabold text-xl">New releases</h1>
 
-                  {
-                    (newReleases) ? <ScrollList data={newReleases}/> 
-                    : <div className="text-center">
-                        <h3>There was a problem fetching data</h3>
-                      </div>
-                  }
+                    {
+                      (newReleases) ? <ScrollList data={newReleases}/> 
+                      : <div className="text-center">
+                          <h3>There was a problem fetching data</h3>
+                        </div>
+                    }
+                  </div>
                   
                 </div>
-                <div className="my-5 mx-2 laptop:w-4/5 w-[500px]">
+                <div className="my-5 mx-2">
                   <h1 className="font-extrabold text-xl">Community Albums</h1>
 
                   {

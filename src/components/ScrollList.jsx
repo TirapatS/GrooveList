@@ -25,7 +25,7 @@ const ScrollList = ({ data }) => {
             <div id="slider" className="max-h-[120px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                 {!loading && data.map((item) => {
                     return (
-                        <div className="my-3 flex justify-around items-center" key={item.id}>
+                        <div className="my-3 flex justify-around items-center pr-5 tablet:px-10" key={item.id}>
                                 
                             <div onClick={(e) => navigateToTrack(item)}>
 
@@ -38,7 +38,7 @@ const ScrollList = ({ data }) => {
                                         /> 
                                         : 
                                         <img
-                                            className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
+                                            className="w-[80px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
                                             src={item.album.images[0].url}
                                             alt={item.name + 'thumbnail'}
                                         />
@@ -46,7 +46,7 @@ const ScrollList = ({ data }) => {
 
                             </div>
 
-                                <div className="laptop:w-[200px] w-[100px] content-center">
+                                <div className="laptop:w-[200px] w-[80px] content-center">
                                     <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
                                     <p className="text-GLwhite text-m ml-2 truncate">{item.artists[0].name}</p>
                                 </div>

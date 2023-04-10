@@ -14,7 +14,7 @@ const CommunityScrollList = ({ data }) => {
               <div id="slider" className="max-h-[320px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                   {data.map((item, idx) => {
                       return (
-                          <div className="my-3 flex justify-around items-center" key={idx}>
+                          <div className="my-3 flex justify-around items-center pr-5 tablet:px-10" key={idx}>
                                   
                             <img
                               className="w-[89px] laptop:w-[120px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl shadow-lg"
