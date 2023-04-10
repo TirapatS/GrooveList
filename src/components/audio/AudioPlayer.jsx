@@ -104,9 +104,9 @@ const AudioPlayer = ({ tracks }) => {
     const trackStyling = `-webkit-gradient(linear, 0% 0%, 100%, 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))`
 
     return (
-        <div className="fixed rounded-lg inset-x-0 bottom-[60px] laptop:bottom-0 font-extrabold bg-gray-600 bg-opacity-80 pb-5">
-            <div>
-                <div className="flex p-2 items-center justify-around px-[100px] tablet:px-[200px] laptop:px-[400px]">
+        <div className="fixed rounded-lg inset-x-0 bottom-0 font-extrabold bg-gray-600 bg-opacity-80">
+            <div className="pb-[70px]">
+                <div className="flex p-2 items-center justify-around px-[50px] tablet:px-[200px] laptop:px-[400px]">
                     <img
                         className="spinImg w-[120px] laptop:w-[120px] inline-block p-2 rounded-full"
                         src={image}
@@ -138,7 +138,7 @@ const AudioPlayer = ({ tracks }) => {
                         style={{background: trackStyling}}
                     />
                 </div>
-                <div className="flex items-center mt-4 px-[100px] tablet:px-[200px] laptop:px-[500px] desktop:px-[600px]">
+                <div className="flex items-center mt-4 px-[100px] tablet:px-[200px] laptop:px-[400px] desktop:px-[600px]">
                     
                     {
                         (volume >= 1) ? 

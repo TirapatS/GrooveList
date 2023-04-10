@@ -144,7 +144,7 @@ const CreateAlbumModal = () => {
 
                             {stateLoading && <h1 className="text-m p-4 rounded-lg">Loading...</h1>}
 
-                            <div id="slider" className="max-h-[320px] laptop:max-h-[320px] overflow-y-auto scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
+                            <div id="slider" className="max-h-[320px] laptop:max-h-[320px] overflow-y-auto overflow-x-hidden scroll whitespace-nowrap scroll-smooth scrollbar scrollbar-thumb-gray-600 scrollbar-track-GLblack">  
                                 {!stateLoading && trackSearch && trackSearch.map((item) => {
                                     return (
                                         <div className="my-3 flex justify-around items-center" key={item.id}>
@@ -152,25 +152,25 @@ const CreateAlbumModal = () => {
                                             {
                                                 (item.images) ?
                                                     <img
-                                                        className="w-[89px] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
+                                                        className="w-[60px] tablet:w-[89] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
                                                         src={item.images[0].url}
                                                         alt={item.name + 'thumbnail'}
                                                     /> 
                                                     : 
                                                     <img
-                                                        className="w-[89px] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
+                                                        className="w-[60px] tablet:w-[89] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
                                                         src={item.album.images[0].url}
                                                         alt={item.name + 'thumbnail'}
                                                     />
                                             }
 
-                                                <div className="laptop:w-[100px] w-[100px] content-center">
-                                                    <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
-                                                    <p className="text-GLwhite text-m ml-2 truncate">{item.artists[0].name}</p>
+                                                <div className="laptop:w-[100px] w-[100px] content-center mx-2">
+                                                    <p className="text-GLwhite text-xs tablet:text-m ml-2 truncate font-extrabold">{item.name}</p>
+                                                    <p className="text-GLwhite text-xs tablet:text-m ml-2 truncate">{item.artists[0].name}</p>
                                                 </div>
 
                                                 <div className="mt-2">
-                                                    <button onClick={(e) => addToAlbum(item, e)} className="text-GLwhite text-m font-extrabold py-2 px-3 rounded-lg hover:scale-105 ease-in-out duration-300 bg-gray-600">Add</button>
+                                                    <button onClick={(e) => addToAlbum(item, e)} className="text-GLwhite text-xs tablet:text-m font-extrabold py-2 px-3 rounded-lg hover:scale-105 ease-in-out duration-300 bg-green-600 mr-5">+</button>
                                                 </div>
                                         
                                         </div>
@@ -189,31 +189,31 @@ const CreateAlbumModal = () => {
                             <div id="slider">  
                                 {!stateLoading && addTrack.map((item) => {
                                     return (
-                                        <div className="my-3 flex justify-around items-center" key={item.id}>
+                                        <div className="my-3 flex justify-around items-center " key={item.id}>
                                                 
                                             {
                                                 (item.images) ?
                                                     <img
-                                                        className="w-[89px] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
+                                                        className="w-[60px] tablet:w-[89] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
                                                         src={item.images[0].url}
                                                         alt={item.name + 'thumbnail'}
                                                     /> 
                                                     : 
                                                     <img
-                                                        className="w-[89px] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
+                                                        className="w-[60px] tablet:w-[89] laptop:w-[100px] inline-block p-2 hover:scale-105 ease-in-out duration-300 rounded-2xl"
                                                         src={item.album.images[0].url}
                                                         alt={item.name + 'thumbnail'}
                                                     />
                                             }
 
-                                                <div className="laptop:w-[100px] w-[100px] content-center">
-                                                    <p className="text-GLwhite text-m ml-2 truncate font-extrabold">{item.name}</p>
-                                                    <p className="text-GLwhite text-m ml-2 truncate">{item.artists[0].name}</p>
+                                                <div className="laptop:w-[100px] w-[100px] content-center mx-2">
+                                                    <p className="text-GLwhite text-sm tablet:text-m ml-2 truncate font-extrabold">{item.name}</p>
+                                                    <p className="text-GLwhite text-sm tablet:text-m ml-2 truncate">{item.artists[0].name}</p>
                                                 </div>
 
                                         
                                                 <div className="mt-2">
-                                                    <button onClick={(e) => removeFromAlbum(item, e)} className="text-GLwhite text-m font-extrabold py-2 px-3 rounded-lg hover:scale-105 ease-in-out duration-300 bg-gray-600 ">Remove</button>
+                                                    <button onClick={(e) => removeFromAlbum(item, e)} className="text-GLwhite text-xs tablet:text-m font-extrabold py-2 px-3 rounded-lg hover:scale-105 ease-in-out duration-300 bg-red-600 mr-5">-</button>
                                                 </div>
                                         
                                         </div>
@@ -225,10 +225,10 @@ const CreateAlbumModal = () => {
                         <div className="flex justify-around mt-5">
                             
                             {
-                                (addTrack.length >= 1) ? <button onClick={(e) => addNewAlbum(e)} className="text-GLwhite text-m font-extrabold p-3 bg-gray-600 rounded-xl hover:scale-105 ease-in-out duration-300">Create album</button> : null
+                                (addTrack.length >= 1) ? <button onClick={(e) => addNewAlbum(e)} className="text-GLwhite text-sm tablet:text-m font-extrabold p-3 bg-gray-600 rounded-xl hover:scale-105 ease-in-out duration-300">Create album</button> : null
                             }
 
-                            <button onClick={(e) => cancelForm()} className="text-GLwhite text-m font-extrabold p-3 bg-gray-600 rounded-xl hover:scale-105 ease-in-out duration-300">Cancel</button>
+                            <button onClick={(e) => cancelForm()} className="text-GLwhite text-sm tablet:text-m font-extrabold p-3 bg-gray-600 rounded-xl hover:scale-105 ease-in-out duration-300">Cancel</button>
                         </div>
                     
                     </>

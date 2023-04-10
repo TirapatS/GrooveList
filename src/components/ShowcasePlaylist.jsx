@@ -13,10 +13,10 @@ const ShowcasePlaylist = ({ data }) => {
 
             {loading && <h1>Loading...</h1>}
 
-            <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-4 grid-cols-4 p-2 laptop:p-0">
+            <div className="grid grid-rows-8 tablet:grid-rows-4 grid-flow-col gap-4 laptop:p-0 p-2 ">
                 {!loading && data.items.map((item) => {
                     return (
-                        <div className="my-3 laptop:w-[120px] w-[69px] h-[200px]" key={item.track.name}>
+                        <div className="my-3 laptop:w-[120px] tablet:w-[69px] w-[59px] h-[200px]" key={item.track.name}>
                             <img className="rounded-lg hover:p-1" src={item.track.album.images?.[0].url} title={item.track.name}/>
                             <div className="font-extrabold">
                                 <p className="text-GLwhite my-2 text-m truncate">{item.track.name}</p>

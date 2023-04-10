@@ -55,7 +55,7 @@ const CommunityTracksPage = () => {
                     <>
                         <div className="flex">
                             <LargeDeviceNav/>
-                            <div className="ml-10 mt-4">
+                            <div className="mx-2 tablet:mx-6 mt-4">
                                 <div className="my-5 mx-2 laptop:w-[500px]">
                                     <h1 className="font-extrabold text-xl">Explore {playlist.name} by {playlist.displayName}</h1>
                                     {

@@ -73,9 +73,9 @@ const AccountPage = () => {
                 <div className="flex h-screen">
                     <LargeDeviceNav/>
 
-                    <div className="laptop:w-[500px]">
+                    <div className="mx-5 tablet:mx-0 w-1/2 laptop:w-[500px]">
                       
-                      <div className="ml-[100px] mt-[50px] w-50 h-[500px] text-xl font-body text-gray-900 bg-GLblack rounded-lg border-2 p-5 font-extrabold">
+                      <div className="tablet:ml-[100px] mt-[50px] w-50 h-[500px] text-xl font-body text-gray-900 bg-GLblack rounded-lg border-2 p-5 font-extrabold">
                           <div className="block w-full px-4 py-2 text-GLwhite bg-GLblack rounded-t-lg cursor-pointer">
                             <h1 className="p-2 text-2xl underline">Account</h1>
                           </div>

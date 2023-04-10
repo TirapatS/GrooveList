@@ -13,7 +13,7 @@ const CommunityTracksList = ({ data }) => {
 
             {loading && <h1>Loading...</h1>}
 
-            <div className="grid laptop:grid-rows-4 laptop:grid-flow-col gap-4 grid-rows-4 grid-cols-4 p-2 laptop:p-0">
+            <div className="grid grid-rows-8 tablet:grid-rows-4 grid-flow-col gap-4 laptop:p-0 p-2 ">
                 {!loading && data.map((item) => {
                     return (
                         <div className="my-3 laptop:mt-3 laptop:mb-6 laptop:w-[120px] w-[69px] h-[200px]" key={item.id}>

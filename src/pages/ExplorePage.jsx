@@ -122,7 +122,7 @@ const ExplorePage = () => {
                     <>
                         <div className="flex h-screen">
                             <LargeDeviceNav/>
-                            <div className=" mx-2 tablet:ml-10 mt-4 tablet:w-2/3">
+                            <div className="">
                                 <div className="my-5 mx-2 w-[200px] laptop:w-full-screen">
                                     <h1 className="font-extrabold text-xl">Explore Categories</h1>
 

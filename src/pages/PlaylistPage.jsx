@@ -78,8 +78,8 @@ const PlaylistPage = () => {
                     <>
                         <div className="flex">
                             <LargeDeviceNav/>
-                            <div className="ml-10 mt-4">
-                                <div className="my-5 mx-2 laptop:w-full-screen">
+                            <div className="mx-2 tablet:mx-5 mt-4 w-3/4">
+                                <div className="tablet:ml-10 mt-4 tablet:w-2/3">
                                     <h1 className="font-extrabold text-xl">Explore {title}</h1>
                                     {
                                     (playlist) ? 

@@ -70,10 +70,10 @@ const CommunityPage = () => {
 
         { largeDevice && (
           <>
-            <div className="flex h-screen">
+            <div className="flex h-full-screen">
               <LargeDeviceNav/>
-              <div className="ml-10 mt-4">
-                <div className="my-5 mx-2 w-[500px] laptop:w-[700px]">
+              <div className="tablet:mx-6 mt-4">
+                <div className="my-5 mx-2 tablet:w-[500px] laptop:w-[700px]">
                   <h1 className="font-extrabold text-xl"> Your albums</h1>
                     <CreateAlbum/>
                     
