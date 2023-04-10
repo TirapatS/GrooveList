@@ -51,9 +51,16 @@ const TrackInfoPage = () => {
 
     useEffect(() => {
         console.log(trackInfo)
+        let minutes
+        let seconds
         if(trackInfo) {
-            let minutes = Math.floor(trackInfo.tracks.items[0].duration_ms / 60000);
-            let seconds = ((trackInfo.tracks.items[0].duration_ms % 60000) / 1000).toFixed(0);
+            if(trackInfo.tracks) {
+                minutes = Math.floor(trackInfo.tracks.items[0].duration_ms / 60000);
+                seconds = ((trackInfo.tracks.items[0].duration_ms % 60000) / 1000).toFixed(0);
+            }else {
+                minutes = Math.floor(trackInfo.duration_ms / 60000);
+                seconds = ((trackInfo.duration_ms % 60000) / 1000).toFixed(0);
+            }
          
             setTrackDuration(minutes + ":" + (seconds < 10 ? '0' : '') + seconds)
         
@@ -140,11 +147,26 @@ const TrackInfoPage = () => {
                                                     alt={trackInfo.name + 'thumbnail'}
                                                 />
                                         }
-                                        <h1 className="font-extrabold text-2xl my-5">{trackInfo.artists[0].name} - {trackInfo.name}</h1>
+                                        <h1 className="font-extrabold text-2xl my-5">{trackInfo.name}</h1>
+
+                                        <div className="">
+                                            <h1 className="font-extrabold text-l my-5">Artists: </h1>
+                                            {trackInfo.artists.map((item, idx) => {
+                                                return (
+                                                    <h1 key={idx} className="font-extrabold text-l my-5 ">{item.name}</h1>
+                                                )
+                                            })}
+                                        </div>
                                         
                                         <div className="items-center">
-                                            <h3 className="font-extrabold my-5">Released: {trackInfo.release_date}</h3>
-                                            <h3 className="font-extrabold my-5">Type: {capitalizeWords(trackInfo.album_type)}</h3>
+                                            {
+                                                (!trackInfo.album) ? <h3 className="font-extrabold my-5">Released: {trackInfo.release_date}</h3>
+                                                : <h3 className="font-extrabold my-5">Released: {trackInfo.album.release_date}</h3>
+                                            }
+                                            {
+                                                (!trackInfo.album) ? <h3 className="font-extrabold my-5">Type: {capitalizeWords(trackInfo.album_type)}</h3>
+                                                : <h3 className="font-extrabold my-5">Type: {capitalizeWords(trackInfo.album.album_type)}</h3>
+                                            }
                                             <h3 className="font-extrabold my-5">Duration: {trackDuration}</h3>
                                         </div>
 

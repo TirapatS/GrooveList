@@ -135,7 +135,7 @@ const getSearchRes = async (item) => {
 
 const getMoreInfo = async (id) => {
     const accessToken = await getAuth()
-
+    let notTrack = false
     try {
         const response = await axios.get(baseUrl + `albums/${id}`, {
             headers: {
@@ -145,6 +145,22 @@ const getMoreInfo = async (id) => {
         return response
     } catch (error) {
         console.log(error)
+        if(error) {
+            notTrack = true
+        }
+    }
+
+    if(notTrack) {
+        try {
+            const response = await axios.get(baseUrl + `tracks/${id}`, {
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+            return response
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

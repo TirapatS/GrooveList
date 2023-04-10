@@ -3,6 +3,7 @@ import { useAuthContext } from "../contexts/AuthContext"
 import useFavourites from "../hooks/useFavourites"
 import { handleFavourites } from '../utils/handleFavourites'
 import { isThisTrackLiked } from "../utils/isThisTrackLiked"
+import { toast } from "react-toastify"
 
 
 const ScrollList = ({ data }) => {
@@ -15,7 +16,7 @@ const ScrollList = ({ data }) => {
             sessionStorage.setItem('selectedTrack', track.id)
             navigate(`/track/${track.id}`)
         }else {
-            toast.error('There was a problem with getting track')
+            toast.error('There was a problem')
         }
     }
 

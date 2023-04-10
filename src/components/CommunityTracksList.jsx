@@ -2,11 +2,22 @@ import { useAuthContext } from "../contexts/AuthContext"
 import useFavourites from "../hooks/useFavourites"
 import { isThisTrackLiked } from "../utils/isThisTrackLiked"
 import { handleFavourites } from "../utils/handleFavourites"
+import { useNavigate } from "react-router-dom"
 
 const CommunityTracksList = ({ data }) => {    
 
     const { currentUser } = useAuthContext()
-    const [ docs, loading, error ] = useFavourites(currentUser)    
+    const [ docs, loading, error ] = useFavourites(currentUser)   
+    const navigate = useNavigate()
+    
+    const navigateToTrack = (track) => {
+        if(track.id) {
+            sessionStorage.setItem('selectedTrack', track.id)
+            navigate(`/track/${track.id}`)
+        }else {
+            toast.error('There was a problem with getting track')
+        }
+    }
     
     return (
         <div className="bg-GLblack rounded-lg mb-[100px] laptop:mb-[0px]">
